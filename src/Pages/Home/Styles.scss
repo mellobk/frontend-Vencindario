@@ -1,0 +1,312 @@
+//scroll bar css 
+.Home_Work_Stage__WorkDiv::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+.Home_Work_Stage__WorkDiv:-webkit-scrollbar-track {
+  background: #ddd;
+}
+ 
+.Home_Work_Stage__WorkDiv::-webkit-scrollbar-thumb {
+  background: #CD0F5B; 
+}
+//cc botones modal 
+.btn__modal{
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn__primary__modal {
+  color: #fff;
+  background-color: #41244A;
+  border-color: #41244A;
+}
+//css primer div para modelos activos
+
+.modelos_activos{
+  width: 54%;
+  background: #CD0F5B;
+    display: block;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-top: 5px;
+}
+
+
+.margintop{
+  margin-top: 116px;
+}
+
+.modelos_activos h1{
+  font-size: 4vw;
+  margin-left: 17px;
+  text-align: left;
+  color: #F5F7FA;
+}
+
+.modelos_activos h2{
+  font-size: 2.5em;
+  text-align: center;
+  padding-bottom: 8px;
+  color:#D9D9D9;
+}
+
+.imgBtnaddHome{
+  position: relative;
+  width: 54%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: block;
+}
+
+// css foto perfil
+.avatarModelo{
+    border-radius: 50%;
+    position: relative;
+    margin-top: 4%;
+    grid-area: avatarModelo;
+ 
+}
+.avatarModeloimg{
+    object-fit: cover;
+    width: 45%;
+    position: relative;
+    border-radius: 500px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    display: flex;
+}
+.avatarModeloimg, .avatarModeloimg > img{
+    width: 250px;
+    height: 250px
+}
+
+.avatarModeloimg{
+    overflow: hidden;
+    border-radius: 100%;
+    border: 3px solid #eee;
+    margin: auto;
+}
+
+//img home 
+.imgPrincipal{
+  width: 100%;
+  opacity: 0.8;
+}
+ //container css 
+.main-content {
+  margin-top: 39px;
+    margin-left: 215px;
+    padding: 0;
+}
+
+//tareas div home css 
+.Home_Work_Stage{
+  
+  margin-top: 30px;
+  padding-bottom: 20px;
+}
+.Home_Work_Stage__WorkDiv{
+  border-style: solid;
+  height: 35vh;
+  border-color: #41244A;
+  border-width: 0.1em;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow-y: auto;
+ 
+}
+.Home_Work_Stage__WorkDivHeader{
+background-color: #40234A;
+color: white;
+font-size: 1.5vw;
+display: flex;
+justify-content: space-between;
+}
+
+.Home_Work_Stage__Button{
+  color:white;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px 8px 2px 0px;
+    cursor: pointer;
+}
+
+
+#textareaHomeWork{
+  width: 100%;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-color: #41244A;
+  border-width: 0.1em;
+}
+.flex{
+  display: flex;
+  align-items: center;
+}
+.Home__Work__Stage__count__text{
+  width: 1.3vw;
+  height: 1.3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: white;
+  color: black;
+  margin: 2px 15px 2px 13px;
+  font-size: 1vw;
+  padding-left: 0px;
+}
+
+.Home_Work_Stage__insideDiv{
+  border-style: solid;
+  border-color: grey;
+  border-width: 0.1em;
+  margin: 10px;
+  font-size: 1.1vw;
+  border-radius: 8px;
+}
+
+.Home_Work_Stage__insideDiv__text__user{
+  color: #41244A;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.Home_Work_Stage__insideDiv__flex{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px 0 10px;
+}
+.Home_Work_Stage__insideDiv__icon__ok{
+  color:green;
+  cursor: pointer;
+}
+.Home_Work_Stage__insideDiv__icon__x{
+color:red;
+cursor: pointer;
+}
+.Home_Work_Stage__insideDiv__text__description{
+  word-wrap: break-word;
+  width: 80%;
+}
+.Home_Work_Stage__done{
+  text-decoration: line-through;
+}
+.Home_Work_Stage__tittle_text{
+  font-size: 4em;
+  text-align: left;
+  color: grey;
+  opacity: 0.8;
+}
+
+
+.size_btn{
+  height: 1.5vw;
+  width: 1.5vw;
+}
+
+.size_btn_add{
+  height: 1.5vw;
+  width: 1.5vw;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  .margintop {
+    margin-top: 40px;
+}
+
+.size_btn{
+  height: 7vw;
+  width: 4vw;
+}
+
+.action__tareas__container{
+  width: 26%;
+}
+.size_btn_add {
+  height: 7vw;
+  width: 7vw;
+}
+
+.imgBtnaddHome {
+  position: relative;
+  width: 80%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: block;
+}
+
+
+.modelos_activos {
+  width: 80%;
+  background: #CD0F5B;
+  display: block;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-top: 5px;
+}
+
+.Home__Work__Stage__count__text {
+  width: 6.3vw;
+  height: 6.3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: white;
+  color: black;
+  margin: 2px 15px 2px 13px;
+  font-size: 5vw;
+  padding-left: 0px;
+}
+
+.modelos_activos h1 {
+  font-size: 10vw;
+  margin-left: 17px;
+  text-align: left;
+  color: #F5F7FA;
+}
+
+.Home_Work_Stage__WorkDivHeader {
+  background-color: #40234A;
+  color: white;
+  font-size: 7.5vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.Home_Work_Stage__insideDiv {
+  border-style: solid;
+  border-color: grey;
+  border-width: 0.1em;
+  margin: 10px;
+  font-size: 4.5vw;
+  border-radius: 8px;
+}
+}
