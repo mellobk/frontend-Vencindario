@@ -1,5 +1,5 @@
 
-import React, { Fragment,Component } from "react";
+import React, { /* Fragment */Component } from "react";
 import PropTypes from "prop-types";
 import ScrollMenu from "react-horizontal-scrolling-menu";
 import "../Css/index.css";
@@ -75,7 +75,7 @@ class MenuScroll extends Component {
     this.props.menuSelected(key)
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate( prevState) {
     const { alignCenter } = prevState;
     const { alignCenter: alignCenterNew } = this.state;
     if (alignCenter !== alignCenterNew) {
@@ -92,7 +92,6 @@ class MenuScroll extends Component {
 
   render() {
     const {
-      alignCenter,
       clickWhenDrag,
       hideArrows,
       dragging,

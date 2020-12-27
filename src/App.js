@@ -3,15 +3,19 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import Home from './Pages/Home'
 import HomePage from './Pages/Homepage'
 import Header from './Components/Header'
-
+import Login from './Pages/Login'
 
 
 
 class App extends Component {
 
+  state={
+    login:true
+  }
   componentDidMount() {
 
   }
+
 
   render() {
 
@@ -24,17 +28,18 @@ class App extends Component {
 
           {
 
-            this.props.isAuth
+            this.state.login
             
               ? <Route >
-            {/*     <Menu /> */}
+                <Header />
                 <Route exact path='/' component={Home} />
+                <Route exact path='/HomePage' component={HomePage} /> 
               </Route>
               : <Route>
                {/*  <Route exact path='/' component={Home} /> */}
-               <Header /> 
-                <Route exact path='/' component={Home} /> 
-                <Route exact path='/HomePage' component={HomePage} /> 
+                
+                <Route exact path='/' component={Login} /> 
+                
               </Route>
 
 

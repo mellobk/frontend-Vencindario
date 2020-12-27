@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { connect } from 'react-redux'
+//import { connect } from 'react-redux'
 //import * as LoginAction from '../../actions/LoginAction'
 import "./Styles.css";
 import Spinner from '../../Global/Spinner'

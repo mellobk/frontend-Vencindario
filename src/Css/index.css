@@ -219,10 +219,41 @@ table {
   margin: 0 auto;
   display: flex;
 }
+
+
+
+
+.avatarModeloPerfil{
+  object-fit: cover;
+  width: 45%;
+  position: relative;
+  border-radius: 500px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  display: flex;
+}
+
+
 .avatarModeloPerfilimg, .avatarModeloPerfilimg > img{
   width: 150px;
   height: 150px
 }
+
+.avatarModeloPerfilAsistenteimg{
+  object-fit: cover;
+  position: relative;
+  border-radius: 500px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  display: flex;
+}
+.avatarModeloPerfilAsistenteimg, .avatarModeloPerfilAsistenteimg > img{
+  width: 250px;
+  height: 250px;
+}
+
 
 .avatarModeloPerfilimg{
   overflow: hidden;
@@ -236,9 +267,7 @@ table {
   transform: translate3d(0px, 0px, 0px);
 }
 
-.react-multi-carousel-item{
- 
-}
+
 .buttonEdit{
   background: none;
   position: relative;

@@ -1,22 +1,23 @@
-import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import React, { Component, /* Fragment */ } from "react";
+/* import { Link } from "react-router-dom";
+import { connect } from "react-redux"; */
 //import * as HomeAction from "../../actions/HomeAction";
 //import "./Styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Carrousel from "../../Components/Carrousel";
+/* import Carrousel from "../../Components/Carrousel"; */
 import styled from "styled-components";
-import Spinner from "../../Global/Spinner";
+/* import Spinner from "../../Global/Spinner";
 import Fatal from "../../Global/Fatal";
 import Success from "../../Global/Success";
 import { Redirect } from "react-router-dom";
 import { FaCheckCircle, FaTimes } from "react-icons/fa";
 import { AiFillPlusCircle } from "react-icons/ai";
-import Modal from "react-bootstrap/Modal";
+import Modal from "react-bootstrap/Modal"; */
 import MenuScroll from '../../Components/Menu'
-import fotoPrueba from "../../Img/descarga.jpg";
+import fotoPrueba from "../../Img/fotoPrueba.png";
 import ProfilePage from '../Profile'
 import DataPage from '../Data'
+import AssistantPage from '../AssistantPage'
 const DivSeparator = styled.div`
     margin-top: 5px;
     width: 100%;
@@ -72,7 +73,7 @@ class HomePage extends Component {
 
 
         
-            <div className='avatarModeloPerfil'>
+            <div className='avatarModeloPerfilAssistant'>
             <img alt='avatar perfil' className='avatarModeloPerfilimg' src={this.state.src} />
           </div>
 
@@ -81,6 +82,7 @@ class HomePage extends Component {
 
           {this.state.menuItem==="MI PERFIL"?<ProfilePage/>:''}
           {this.state.menuItem==="DATA"?<DataPage/>:''}
+          {this.state.menuItem==="MI ASISTENTE"?<AssistantPage/>:''}
       </div>
     );
   }

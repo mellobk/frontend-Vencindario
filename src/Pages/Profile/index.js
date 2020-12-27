@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ButtonForm from "../../Components/ButtonForm";
 import Modal from "react-bootstrap/Modal";
 
-import fotoPrueba from "../../Img/descarga.jpg";
+import fotoPrueba from "../../Img/fotoPrueba.png";
 
 
 /* import { Link } from "react-router-dom";

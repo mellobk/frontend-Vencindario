@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import styled from "styled-components";
+/* import styled from "styled-components"; */
 import "../../Css/index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import H2 from "../../Components/H2";
