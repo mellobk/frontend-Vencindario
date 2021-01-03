@@ -2,10 +2,9 @@
 import React, { Fragment } from "react";
 import styled from 'styled-components'
 import H1 from './H1'
-import { RiHomeLine} from "react-icons/ri";
 import { Link } from "react-router-dom";
-
-
+import profileImg from "../Img/profileImg.png";
+import homeImg from "../Img/homeImg.png";
 
 
 const HeaderContainer = styled.div`
@@ -19,12 +18,12 @@ const HeaderContainer = styled.div`
 
 const HeaderNameContainer = styled.div`
   background-color:#E8E1A3;
-  width:55%;
+  width:70%;
   display:flex;
   margin:0 auto;
   text-align:center;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 33px;
+  border-bottom-right-radius: 33px;
  
 `
 const IconStyle = {
@@ -38,20 +37,21 @@ export const  HeaderApp  = (props) => {
         return (
             <Fragment>
           <HeaderContainer>      
-          <Link to="/"><span ><RiHomeLine size={'20px'} style={{...IconStyle,marginRight:'20px'}} /></span> </Link>
+          <Link to="/Home"><img src={homeImg} alt='img home Img'  style={{...IconStyle,marginRight:'20px',width:'27%',float:'right'}}/></Link>
                 
             <H1
-            aling='center'
-            color='white'
-            text='ByPlanner'
+            aling='center'            
+            text='ByPlanner'            
+            style={{    margin:'10px',color:'white',fontSize:'2rem'}}
             />
-             <Link to="/HomePage"> <span ><RiHomeLine size={'20px'} style={{...IconStyle,marginLeft:'20px'}} /></span> </Link>
+             <Link to="/HomePage"><img src={profileImg} alt='img profile Img' style={{...IconStyle,marginLeft:'20px',width:'27%'}}/> </Link>
            </HeaderContainer>
         <HeaderNameContainer>
-             <h2 style={{fontSize:'14px',textAlign:'center',width:'100%',marginTop:'4px'}}>BRAYAN  ALEXANDER MANRIQUE BONILLA</h2>
+             <h2 style={{fontSize:'14px',textAlign:'center',width:'100%',marginTop:'4px'}}>{props.userInfo.user_plataform_name?props.userInfo.user_plataform_name.toUpperCase():''}</h2>
         </HeaderNameContainer>
         </Fragment>
         ) 
 }
+
 
 export default HeaderApp;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-//import * as HomeAction from "../../actions/HomeAction";
-//import "./Styles.scss";
+import * as AppAction from '../../Actions/AppAction'
+import { connect } from 'react-redux'
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import Carrousel from "../../Components/Carrousel";
@@ -8,7 +8,6 @@ import closeButton from "../../Img/closeButton.png";
 /* import Spinner from "../../Global/Spinner";
 import Fatal from "../../Global/Fatal";
 import Success from "../../Global/Success";
-import { Redirect } from "react-router-dom";
 import { FaCheckCircle, FaTimes } from "react-icons/fa";
 import { AiFillPlusCircle } from "react-icons/ai"; */
 import Modal from "react-bootstrap/Modal";
@@ -36,32 +35,71 @@ const ImgBotonCerrarModal = styled.img`
 }; */
 
 class Home extends Component {
-  state = { show: false };
+  state = { show: false,video:'',textModal:'' };
 
   showModal = () => {
     this.setState({ show: true });
   };
+
+
+  sendInfoModal = (video,text) => {
+    this.setState({ video: video,textModal:text });
+    
+  };
+
+
 
   hideModal = () => {
     this.setState({ show: false });
     console.log("close");
   };
 
-  async componentDidMount() {}
+  async componentDidMount( ) {
 
-  componentDidUpdate() {}
+    const { logOut,obtener_carusel,getUserInfo } = this.props;
+
+    if(!window.localStorage.getItem("token") ){
+      logOut()
+    }
+    obtener_carusel()
+
+    getUserInfo()
+ 
+   
+   
+  }
+
+  
+  componentDidUpdate() {
+   
+  
+  }
 
   componentWillUnmount() {}
 
   render() {
+  
     return (
+
+    
       <div className="main-content fade-in ">
-      <div style={{marginTop:"15px"}}>
-        <Carrousel showModal={this.showModal} titleText="PRIMEROS PASOS" />
+        
+ 
+        
+        {
+               this.props.app_carrusel.map((carrusel, key) => (
+                <div key={key} style={{marginTop:"25px"}}>
+               { carrusel.item_carrusel.length>0?
+                <Carrousel key={key} items={carrusel.item_carrusel} showModal={this.showModal} sendInfoModal={this.sendInfoModal} titleText={carrusel.title_carrusel} />:""}
+                </div>
+        
+              ))
+        }
+{/*         <Carrousel showModal={this.showModal} titleText="PRIMEROS PASOS" />
         <Carrousel titleText="SERVICIOS PARA TI Y SUS BENEFICIOS" />
         <Carrousel titleText="SERVICIOS PARA TUS CLIENTES Y BENEFICIOS PARA TI" />
-        <Carrousel titleText="SERVICIOS PARA TUS CLIENTES Y BENEFICIOS PARA ELLOS" />
-      </div>
+        <Carrousel titleText="SERVICIOS PARA TUS CLIENTES Y BENEFICIOS PARA ELLOS" /> */}
+    
 
 
       <Modal show={this.state.show} onHide={this.hideModal} style={{marginTop:'80px'} }>
@@ -73,24 +111,21 @@ class Home extends Component {
             width="100%"
             title="video"
             height="315"
-            src="https://www.youtube.com/embed/l5nnc7iWDRM"
+            src={this.state.video}
             contols="2"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
-            <p  style={{overflow:'auto', maxHeight: '100%'}}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-             Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut </p>
+            <p  style={{overflow:'auto', maxHeight: '100%',overflowWrap:'break-word'}}>{this.state.textModal}</p>
           </Modal.Body>
         </Modal>
       </div>
-    );
+    )
   }
 }
 
-//conectar tareas al reducer y traer las acciones del tareas actions
-/* const mapStateToProps = reducers => {
-  return reducers.HomeReducer;
-}; */
-//conectar tareas al reducer y traer las acciones del tareas actions
-export default Home;
+
+const mapStateToProps = ({ AppReducer }) => AppReducer
+export default connect(mapStateToProps, AppAction)(Home)
+

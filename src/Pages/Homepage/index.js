@@ -1,4 +1,6 @@
 import React, { Component, /* Fragment */ } from "react";
+import * as AppAction from '../../Actions/AppAction'
+import { connect } from "react-redux"; 
 /* import { Link } from "react-router-dom";
 import { connect } from "react-redux"; */
 //import * as HomeAction from "../../actions/HomeAction";
@@ -9,10 +11,11 @@ import styled from "styled-components";
 /* import Spinner from "../../Global/Spinner";
 import Fatal from "../../Global/Fatal";
 import Success from "../../Global/Success";
-import { Redirect } from "react-router-dom";
+
 import { FaCheckCircle, FaTimes } from "react-icons/fa";
 import { AiFillPlusCircle } from "react-icons/ai";
 import Modal from "react-bootstrap/Modal"; */
+import { URL } from '../../Global/url'
 import MenuScroll from '../../Components/Menu'
 import fotoPrueba from "../../Img/fotoPrueba.png";
 import ProfilePage from '../Profile'
@@ -47,8 +50,14 @@ class HomePage extends Component {
   };
 
   async componentDidMount() {
-   
+    const { logOut } = this.props;
+
+    if(!window.localStorage.getItem("token") ){
+      logOut()
+    }
+
     this.setState({ src: fotoPrueba });
+
   }
   
 
@@ -70,17 +79,15 @@ class HomePage extends Component {
   render() {
     return (
       <div className="main-content fade-in ">
-
-
-        
+       
             <div className='avatarModeloPerfilAssistant'>
-            <img alt='avatar perfil' className='avatarModeloPerfilimg' src={this.state.src} />
+            <img alt='avatar perfil' className='avatarModeloPerfilimg' src={`${URL}getImageOriginal/${this.props.app_user_info.profile_picture_miniature}`} />
           </div>
 
           <DivSeparator ></DivSeparator>
           <MenuScroll menuSelected={this.menuSelected} />
 
-          {this.state.menuItem==="MI PERFIL"?<ProfilePage/>:''}
+          {this.state.menuItem==="MI PERFIL"?<ProfilePage userInfo={this.props.app_user_info}/>:''}
           {this.state.menuItem==="DATA"?<DataPage/>:''}
           {this.state.menuItem==="MI ASISTENTE"?<AssistantPage/>:''}
       </div>
@@ -93,4 +100,7 @@ class HomePage extends Component {
   return reducers.HomeReducer;
 }; */
 //conectar tareas al reducer y traer las acciones del tareas actions
-export default HomePage;
+
+const mapStateToProps = ({ AppReducer }) => AppReducer
+export default connect(mapStateToProps, AppAction)(HomePage)
+

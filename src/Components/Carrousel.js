@@ -1,7 +1,7 @@
 import React, { /* Fragment */ } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import imgFondo from "../Img/imgStandar.png";
+import { URL } from '../Global/url'
 
 const responsive = {
   superLargeDesktop: {
@@ -23,6 +23,7 @@ const responsive = {
   },
 };
 
+
 /*   const CustomRightArrow = ({ onClick, ...rest }) => {
     const {
       onMove,
@@ -33,9 +34,20 @@ const responsive = {
   }; */
 
 export const HeaderApp = (props) => {
+
+  const modalClickEvent = (e,video,text) =>{
+ e.preventDefault()
+ props.showModal()
+ props.sendInfoModal(video,text)
+  }
+
+  const modalClickEventNone = (e) =>{
+    e.preventDefault()
+
+     }
   return (
-    <div style={{ width: "100%" }}>
-      <Carousel
+    <div  style={window.innerWidth>600 ?{width:'70%',margin:'0 auto'}:{width:'100%',margin:'0 auto'}}>
+      <Carousel        
         swipeable={true}
         draggable={true}
         showDots={true}
@@ -51,14 +63,33 @@ export const HeaderApp = (props) => {
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
       >
-        <div onClick={props.showModal} style={{ height: "100%", display: "flex", alignItems: "center" }}>
+
+{/* carrusel_plataform_id: 1
+created_at: null
+id: 1
+modal: 1
+modal_text: "qweqwqwqdqdqwqeqweqwdqwqwewqdqweqwewqeqweqeqweqwewqqweqweqweqeqewqeqeqeqeweqweqweqweqqew"
+modal_video: "dIwOmgaO7Ck"
+picture_item_carrusel: "https://www.youtube.com/watch?v=dIwOmgaO7Ck&ab_&ab_"
+updated_at: null */}
+{console.log('items del div',props.items)}
+        {   
+        props.items?
+        props.items.map((itemCarrusel, key) => (
+
+          <div key={key}   onClick={itemCarrusel.modal?(e)=>modalClickEvent(e,itemCarrusel.modal_video,itemCarrusel.modal_text):(e)=>modalClickEventNone} style={{ height: "100%", display: "flex", alignItems: "center" }}>
           <img
-            src={imgFondo}
+            src={`${URL}getImageOriginal/${itemCarrusel.picture_item_carrusel}`}
             alt="img de prueba"
             style={{ width: "95%", margin: "0 auto" }}
           />
         </div>
-        <div>
+          
+  
+        )):""    
+      }
+  
+  {/*       <div>
           <iframe
             width="100%"
             title="video"
@@ -69,24 +100,11 @@ export const HeaderApp = (props) => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-        </div>
-        <div style={{ height: "100%", display: "flex", alignItems: "center" }}>
-          <img
-            src={imgFondo}
-            alt="img de prueba"
-            style={{ width: "95%", margin: "0 auto" }}
-          />
-        </div>
-        <div style={{ height: "100%", display: "flex", alignItems: "center" }}>
-          <img
-            src={imgFondo}
-            alt="img de prueba"
-            style={{ width: "95%", margin: "0 auto" }}
-          />
-        </div>
+        </div> */}
+ 
       </Carousel>
-      ;
-      <h2 style={{ textAlign: "center", fontSize: "1.5rem" }}>
+      
+      <h2 style={{ textAlign: "center", fontSize: "1.5rem",marginTop:'10px' }}>
         {props.titleText}
       </h2>
     </div>

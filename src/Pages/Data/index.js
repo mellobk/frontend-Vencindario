@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 /* import styled from "styled-components"; */
 import "../../Css/index.css";
+import * as AppAction from '../../Actions/AppAction'
+import { connect } from 'react-redux'
 import "bootstrap/dist/css/bootstrap.min.css";
 import H2 from "../../Components/H2";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -21,6 +23,13 @@ import Modal from "react-bootstrap/Modal";
 class DataPage extends Component {
   async componentDidMount() {}
 
+
+  descargarExcel = (e,name) =>{
+    e.preventDefault()
+    const {descar_excel } = this.props;
+    descar_excel(name)
+  }
+
   componentDidUpdate() {
     /*   console.log('prevProps State',prevProps)
    console.log('prevState State',prevState)
@@ -40,8 +49,8 @@ class DataPage extends Component {
         <div className="main-content fade-in ">
           <div className="container-fluid" style={{marginTop:'25px',marginBottom:'25px'}}>
             <div className="row">
-              <div className="col-6">
-                <img style={{width:'100%'}} src={ExcelImg} alt='excel IMG' />
+              <div className="col-6 col-md-3">
+                <img  onClick={(e)=>this.descargarExcel(e,'BASE DE DATOS.xlsx')} style={{width:'100%'}} src={ExcelImg} alt='excel IMG' />
                 <H2
                   aling="center"
                   sizeText={"14px"}
@@ -49,8 +58,8 @@ class DataPage extends Component {
                   text="BASE DE DATOS"
                 />
               </div>
-              <div className="col-6">
-                <img style={{width:'100%'}} src={ExcelImg} alt='excel IMG'/>
+              <div className="col-6 col-md-3">
+                <img onClick={(e)=>this.descargarExcel(e,'HISTORIAL DE EVENTOS.xlsx')} style={{width:'100%'}} src={ExcelImg} alt='excel IMG'/>
                 <H2
                   aling="center"
                   sizeText={"14px"}
@@ -58,8 +67,8 @@ class DataPage extends Component {
                   text="HISTORIAL DE EVENTOS"
                 />
               </div>
-              <div className="col-6">
-                <img style={{width:'100%'}} src={ExcelImg} alt='excel IMG'/>
+              <div className="col-6 col-md-3">
+                <img onClick={(e)=>this.descargarExcel(e,'LISTA DE PRECIOS.xlsx')} style={{width:'100%'}} src={ExcelImg} alt='excel IMG'/>
                 <H2
                   aling="center"
                   sizeText={"14px"}
@@ -67,8 +76,8 @@ class DataPage extends Component {
                   text="LISTA DE PRECIOS"
                 />
               </div>
-              <div className="col-6">
-                <img style={{width:'100%'}} src={ExcelImg} alt='excel IMG'/>
+              <div className="col-6 col-md-3">
+                <img onClick={(e)=>this.descargarExcel(e,'LINKS.xlsx')} style={{width:'100%'}} src={ExcelImg} alt='excel IMG'/>
                 <H2
                   aling="center"
                   sizeText={"14px"}
@@ -89,4 +98,6 @@ class DataPage extends Component {
   return reducers.HomeReducer;
 }; */
 //conectar tareas al reducer y traer las acciones del tareas actions
-export default DataPage;
+const mapStateToProps = ({ AppReducer }) => AppReducer
+export default connect(mapStateToProps, AppAction)(DataPage)
+

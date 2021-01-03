@@ -1,6 +1,6 @@
 @font-face {
   font-family: "font-page";
-  src: url('./Champagne&Limousines.ttf');
+  src: url('./TrajanPro-Regular.ttf');
   }
 body{
   margin: 0;
@@ -175,6 +175,15 @@ form {
 }
 
 
+.alert-success {
+  color: #155724;
+  margin: 10px 0 0 0;
+  width: 85%;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  margin: 0 auto;
+  margin-top: 11px;
+}
 
 .scroll-menu-arrow {
   padding: 10px;
@@ -262,6 +271,9 @@ table {
   margin: auto;
 }
 
+
+
+
 @media only screen and (max-width: 600px) {
 .menu-wrapper--inner{
   transform: translate3d(0px, 0px, 0px);
@@ -274,6 +286,15 @@ table {
   border: 0.2px solid black;
   margin-right: 0px;
   margin-top: 2px;
+  float: right;
+}
+
+
+.buttonEditInformation{
+  background: none;
+  position: relative;
+  border: 0.2px solid black;
+  margin: 25px 26px;
   float: right;
 }
 

@@ -54,7 +54,7 @@ class AssistantPage extends Component {
           aling="center"
           sizeText={"16px"}
           color="black"
-          text="HISTORIAL DE EVENTOS"
+          text="JAKELINE VILLA"
         />
 
         <H2 aling="center" sizeText={"16px"} color="black" text="313850660" />

@@ -1,17 +1,38 @@
 import React, { Component } from "react"
 //import { connect } from 'react-redux'
-//import * as LoginAction from '../../actions/LoginAction'
+import * as AppAction from '../../Actions/AppAction'
 import "./Styles.css";
+import { connect } from 'react-redux'
 import Spinner from '../../Global/Spinner'
 import Fatal from '../../Global/Fatal'
-import loginImg from "../../Img/valeslogo.png";
-import loginImgUser from "../../Img/loginImgUser.png";
-import loginImgPassword from "../../Img/loginImgPassword.png";
+import styled from 'styled-components'
+import H1 from '../../Components/H1'
+import { URL } from '../../Global/url'
 
+const backGroundImg=`${URL}getImageOriginal/backImg.png`
+const LoginDiv = styled.div`
+    background-image: url(${backGroundImg});
+    width: 100%;
+    background-color: #f8f8ff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+`
 
 
 class Login extends Component {
 
+    async componentDidMount( ) {
+
+        const { comprobartoken } = this.props;
+    
+        if(window.localStorage.getItem("token") ){
+            comprobartoken()
+        }
+       
+      }
+
+      
     cambioUsuarioId = (e) => {
         this.props.cambioUsuarioId(e.target.value)
     }
@@ -21,12 +42,12 @@ class Login extends Component {
     }
 
     deshabilitar = () => {
-        const { usuario_id, password, cargando } = this.props
+        const { usuario_id, cargando } = this.props
         if (cargando) {
             return false;
         }
 
-        if (!usuario_id || !password) {
+        if (!usuario_id) {
             return true;
         }
         return false;
@@ -48,14 +69,13 @@ class Login extends Component {
 
 
     guardar = () => {
+        console.log('nuevo login')
         const {
             usuario_id,
-            password,
             agregar,
         } = this.props
         const nueva_tarea = {
             username: usuario_id,
-            userpassword: password,
         }
 
         agregar(nueva_tarea)
@@ -65,30 +85,38 @@ class Login extends Component {
 
 
     render() {
-
+        const HeaderContainer = styled.div`
+        background-color:black;
+        width:100%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+       
+      `
+      
         return (
-            <div className='login__div'>
+            <LoginDiv>
                 <div className='login__div__container'>
-                   
-                   <img alt='imagenLogin' src={loginImg} className='login__img__log' />
+                <HeaderContainer>      
+         
+                
+            <H1
+            aling='center'
+            color='white'
+            text='ByPlanner'
+            />
+             
+           </HeaderContainer>
+           
                   <div className='log_inputs'>
-                  <img  alt='imagenLoginText' src={loginImgUser} className='login_log' />
                   <input
                         className='login_input_user'
-                        type='text'
+                        type='number'
                         value={this.props.usuario_id}
                         onChange={this.cambioUsuarioId}
                     />
                   </div>
 
-                  <div className='log_inputs'>
-                  <img  alt='imagenLoginPasss' src={loginImgPassword} className='login_log' />
-                  <input
-                        className='login_input_password'
-                        type='password'
-                        value={this.props.password}
-                        onChange={this.cambioTitulo} />
-                  </div>
              <div className='login__button__div'>
              <button    className='button__login'
                         onClick={this.guardar}
@@ -96,14 +124,16 @@ class Login extends Component {
                         Login
                 </button>
              </div>
+                  <div className='action_div'>
+                  {this.mostrarAccion()}
+                  </div>
                   
-                    {this.mostrarAccion()}
 
                    
                 </div>
 
 
-            </div>
+            </LoginDiv>
         )
     }
 
@@ -116,4 +146,6 @@ class Login extends Component {
 //conectar tareas al reducer y traer las acciones del tareas actions
 //const mapStateToProps = ({ LoginReducer }) => LoginReducer
 //conectar tareas al reducer y traer las acciones del tareas actions
-export default Login
+const mapStateToProps = ({ AppReducer }) => AppReducer
+//conectar tareas al reducer y traer las acciones del tareas actions
+export default connect(mapStateToProps, AppAction)(Login)

@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
+import * as AppAction from '../src/Actions/AppAction'
+import { connect } from 'react-redux'
 import Home from './Pages/Home'
+import { Redirect } from "react-router-dom";
 import HomePage from './Pages/Homepage'
 import Header from './Components/Header'
-import Login from './Pages/Login'
+import LoginVales from './Pages/Login'
 
 
 
 class App extends Component {
 
-  state={
-    login:true
-  }
+  
   componentDidMount() {
-
+    const { getUserInfo } = this.props;
+    getUserInfo()
   }
 
 
@@ -28,17 +30,18 @@ class App extends Component {
 
           {
 
-            this.state.login
+            this.props.isAuth
             
               ? <Route >
-                <Header />
-                <Route exact path='/' component={Home} />
+                <Header  userInfo={this.props.app_user_info}/>
+                <Route exact path='/Home' component={Home} />
                 <Route exact path='/HomePage' component={HomePage} /> 
               </Route>
               : <Route>
                {/*  <Route exact path='/' component={Home} /> */}
                 
-                <Route exact path='/' component={Login} /> 
+                <Route exact path='/' component={LoginVales} /> 
+                
                 
               </Route>
 
@@ -47,6 +50,7 @@ class App extends Component {
           }
 
           {
+             this.props.isAuth ? <Redirect to='/Home' /> : <Redirect to='/' />
 /* 
             this.props.isAuth ? <Redirect to='/Home' /> : <Redirect to='/' /> */
           }
@@ -61,4 +65,6 @@ class App extends Component {
 
 /* const mapStateToProps = ({ LoginReducer }) => LoginReducer */
 //conectar tareas al reducer y traer las acciones del login actions
-export default App
+const mapStateToProps = ({ AppReducer }) => AppReducer
+//conectar tareas al reducer y traer las acciones del tareas actions
+export default connect(mapStateToProps, AppAction)(App)
