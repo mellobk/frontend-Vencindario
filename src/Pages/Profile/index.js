@@ -94,6 +94,14 @@ class ProfileData extends Component {
   };
 
 
+  mostrarAccionModalImg = () => {
+    const { cargando } = this.props;
+    if (cargando) {
+      return <Spinner />;
+    }
+    return false;
+  };
+
   onClose() {
     this.setState({ preview: null });
   }
@@ -197,7 +205,7 @@ class ProfileData extends Component {
               <img
                 alt="img del perfil"
                 src={this.state.src}
-                style={{ width: "100%", height: "54vw", objectFit: "contain" }}
+                style={window.innerWidth>600 ?{ width: "100%", height: "25vw", objectFit: "contain" }:{ width: "100%", height: "54vw", objectFit: "contain" }}
               />
               <button
                 className="buttonEdit"
@@ -254,8 +262,8 @@ class ProfileData extends Component {
              <ButtonForm
               titleText="CELULAR"
               placeholder="Ingrese Celular"
-              onchange={(e)=>this.onchangeText(e,'user_brand')}
-              typeText={'user_cellPhone'}
+              onchange={(e)=>this.onchangeText(e,'user_cellPhone')}
+              typeText={'number'}
               value={this.props.userInfo.user_cellPhone}
             />
             </div>
@@ -349,6 +357,11 @@ class ProfileData extends Component {
                 alt="Preview"
                 style={{ display: "flex", margin: "0 auto" }}
               />
+
+<div className='action_div'>
+                  {this.mostrarAccionModalImg()}
+                  </div>
+                  
               <button
              
                 onClick={(e) => {

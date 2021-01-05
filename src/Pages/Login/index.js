@@ -102,7 +102,7 @@ class Login extends Component {
                 
             <H1
             aling='center'
-            style={{    margin:'10px',color:'white',fontSize:'2rem'}}
+            style={{margin:'10px',color:'white',fontSize:'2rem'}}
             text='ByPlanner'
             />
              

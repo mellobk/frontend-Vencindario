@@ -125,6 +125,8 @@ body{
 .App {
   text-align: center;
   margin-top: 5px;
+  display: flex;
+  justify-content: center;
 }
 
 .App-logo {
@@ -272,11 +274,30 @@ table {
 }
 
 
-
+.buttonEditInformation{ 
+  background: none;
+  position: relative;
+  border: 0.2px solid black;
+  margin-top: 25px;
+  margin-left: 7.5vw;
+  
+}
+.menu-wrapper--inner{
+  transform: translate3d(20vw, 0px, 0px);
+  width: auto !important;
+}
 
 @media only screen and (max-width: 600px) {
 .menu-wrapper--inner{
   transform: translate3d(0px, 0px, 0px);
+  width: 990000px !important;
+}
+
+.App {
+  text-align: center;
+  margin-top: 5px;
+  display: block;
+  justify-content: inherit;
 }
 
 

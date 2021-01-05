@@ -7,21 +7,39 @@ import { Redirect } from "react-router-dom";
 import HomePage from './Pages/Homepage'
 import Header from './Components/Header'
 import LoginVales from './Pages/Login'
-
-
+import axios from 'axios'
+import {URL} from '../src/Global/url'
 
 class App extends Component {
-
   
-  componentDidMount() {
-    const { getUserInfo } = this.props;
+  async componentDidMount() {
+    const { getUserInfo,getUserInfoAssistant,accesRegister } = this.props;
     getUserInfo()
+    getUserInfoAssistant()  
+    accesRegister('entrada')
+   
+   
   }
 
+  componentWillUnmount() {
+   
+  }
 
   render() {
 
-
+    
+    window.addEventListener("beforeunload", async function (e) {  
+      e.preventDefault()      
+      let headers = {
+        "Content-Type": "application/json",
+        'Authorization': window.localStorage.getItem('token')
+    }
+    await axios.get(URL+`accesRegister/salida`,{
+        headers: headers
+    })
+      return;
+    });
+ 
     return (
       <BrowserRouter>
 

@@ -1,8 +1,9 @@
-import { CARGANDO, ERROR, CAMBIO_USUARIO_ID, CAMBIO_TITULO, GUARDAR, TRAER_TODAS,TOKENVERIFY,CERRAR_SESION,PERMISOS,CONSULTAR_DIV,CONSULTAR_INFO,SUCCESS} from '../Types/AppTypes'
+import { CARGANDO, ERROR, CAMBIO_USUARIO_ID, CAMBIO_TITULO, GUARDAR, TRAER_TODAS,TOKENVERIFY,CERRAR_SESION,PERMISOS,CONSULTAR_DIV,CONSULTAR_INFO,SUCCESS,CONSULTAR_INFO_ASISTENTE} from '../Types/AppTypes'
 const INITIAL_STATE = {
     login: [],
     app_carrusel:[],
     app_user_info:[],
+    app_user_assistant_info:[],
     permisos:'',
     perfil:'',
     cargando: false,
@@ -51,9 +52,20 @@ export default (state = INITIAL_STATE, action) => {
                 case CONSULTAR_INFO:
                     return {
                         ...state,
-                        app_user_info: action.payload,
+                        app_user_info: action.payload,cargando: false,
+                        success: '',
+                        error: ''
         
                     }
+
+                    case CONSULTAR_INFO_ASISTENTE:
+                        return {
+                            ...state,
+                            app_user_assistant_info: action.payload,cargando: false,
+                            success: '',
+                            error: ''
+            
+                        }
         case CAMBIO_TITULO:
             return {
                 ...state,

@@ -18,7 +18,7 @@ const HeaderContainer = styled.div`
 
 const HeaderNameContainer = styled.div`
   background-color:#E8E1A3;
-  width:70%;
+  width:${window.innerWidth>600?'40%':"70%"};
   display:flex;
   margin:0 auto;
   text-align:center;
@@ -42,12 +42,12 @@ export const  HeaderApp  = (props) => {
             <H1
             aling='center'            
             text='ByPlanner'            
-            style={{    margin:'10px',color:'white',fontSize:'2rem'}}
+            style={{margin:'10px',color:'white',fontSize:'2rem'}}
             />
              <Link to="/HomePage"><img src={profileImg} alt='img profile Img' style={{...IconStyle,marginLeft:'20px',width:'27%'}}/> </Link>
            </HeaderContainer>
         <HeaderNameContainer>
-             <h2 style={{fontSize:'14px',textAlign:'center',width:'100%',marginTop:'4px'}}>{props.userInfo.user_plataform_name?props.userInfo.user_plataform_name.toUpperCase():''}</h2>
+             <h2 style={{fontSize:'14px',textAlign:'center',width:'100%',marginTop:window.innerWidth>600?'12px':'4px'}}>{props.userInfo.user_plataform_name?props.userInfo.user_plataform_name.toUpperCase():''}</h2>
         </HeaderNameContainer>
         </Fragment>
         ) 

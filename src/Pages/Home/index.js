@@ -56,14 +56,16 @@ class Home extends Component {
 
   async componentDidMount( ) {
 
+  /*   window.onfocus = function() { console.log('focus'); };
+    window.onblur = function() { console.log('blur'); } */
     const { logOut,obtener_carusel,getUserInfo } = this.props;
 
     if(!window.localStorage.getItem("token") ){
       logOut()
     }
     obtener_carusel()
-
     getUserInfo()
+   
  
    
    

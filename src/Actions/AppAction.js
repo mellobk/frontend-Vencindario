@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {CARGANDO,ERROR,CAMBIO_USUARIO_ID,CAMBIO_TITULO,GUARDAR,PERMISOS,TOKENVERIFY,CERRAR_SESION,CONSULTAR_DIV,CONSULTAR_INFO,SUCCESS} from '../Types/AppTypes'
+import {CARGANDO,ERROR,CAMBIO_USUARIO_ID,CAMBIO_TITULO,GUARDAR,PERMISOS,TOKENVERIFY,CERRAR_SESION,CONSULTAR_DIV,CONSULTAR_INFO,SUCCESS,CONSULTAR_INFO_ASISTENTE} from '../Types/AppTypes'
 import {URL} from '../../src/Global/url'
 var FileSaver = require('file-saver');
 //acciones para tareas 
@@ -74,6 +74,106 @@ export const getUserInfo = () => async(dispatch)=>{
         }
     }
 }
+
+export const getUserInfoAssistant = () => async(dispatch)=>{   
+
+
+    try {
+
+     
+  
+
+        let headers = {
+            "Content-Type": "application/json",
+            'Authorization': window.localStorage.getItem('token')
+        }
+        const respuesta = await axios.get(URL+`getAssistantInfo`,{
+            headers: headers
+        })
+    
+        dispatch({
+            type: CONSULTAR_INFO_ASISTENTE,
+            payload:respuesta.data.data,
+        })
+        
+
+        if(respuesta.data.status==="Error"){
+            dispatch({
+        
+                type: ERROR,
+                payload: respuesta.data.message
+                
+            
+            })
+
+        }
+        
+    } catch (error) {
+        
+        if(error.message==="Request failed with status code 401"){
+            window.localStorage.setItem('token','')
+            window.localStorage.setItem('userData','')
+        }else{
+            dispatch({
+
+                type: ERROR,
+                payload: error.message
+                
+            
+            })
+        }
+    }
+}
+
+export const accesRegister = (data) => async(dispatch)=>{   
+
+
+    try {
+
+     
+  
+
+        let headers = {
+            "Content-Type": "application/json",
+            'Authorization': window.localStorage.getItem('token')
+        }
+        const respuesta = await axios.get(URL+`accesRegister/${data}`,{
+            headers: headers
+        })
+    
+        window.sessionStorage.setItem('loginAccess',true)
+
+        
+        if(respuesta.data.status==="Error"){
+            dispatch({
+        
+                type: ERROR,
+                payload: respuesta.data.message
+                
+            
+            })
+
+        }
+        
+    } catch (error) {
+        
+        if(error.message==="Request failed with status code 401"){
+            window.localStorage.setItem('token','')
+            window.localStorage.setItem('userData','')
+        }else{
+            dispatch({
+
+                type: ERROR,
+                payload: error.message
+                
+            
+            })
+        }
+    }
+}
+
+
+
 export const obtener_carusel = () => async(dispatch)=>{   
 
 
@@ -294,14 +394,7 @@ export const guardarimagen = (data,nameVar) => async (dispatch,getState) => {
 
     const {app_user_info} = getState().AppReducer
 
-    dispatch({
-
-        type: CARGANDO
-
-
-    })
-
-    try {
+      try {
 
 
         let params = data
