@@ -47,7 +47,7 @@ export const  HeaderApp  = (props) => {
              <Link to="/HomePage"><img src={profileImg} alt='img profile Img' style={{...IconStyle,marginLeft:'20px',width:'27%'}}/> </Link>
            </HeaderContainer>
         <HeaderNameContainer>
-             <h2 style={{fontSize:'14px',textAlign:'center',width:'100%',marginTop:window.innerWidth>600?'12px':'4px'}}>{props.userInfo.user_plataform_name?props.userInfo.user_plataform_name.toUpperCase():''}</h2>
+           <Link to={'/HomePage'} style={{textDecoration:'none', color:'black',margin:'0 auto'}}>  <h2 style={{fontSize:'14px',textAlign:'center', textDecoration:'none', width:'100%',marginTop:window.innerWidth>600?'12px':'4px'}}>{props.userInfo.user_plataform_name?props.userInfo.user_plataform_name.toUpperCase():''}</h2></Link>
         </HeaderNameContainer>
         </Fragment>
         ) 

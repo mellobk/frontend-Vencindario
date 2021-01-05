@@ -113,7 +113,7 @@ class ProfileData extends Component {
   }
 
   onBeforeFileLoad(elem) {
-    console.log(elem.target.files[0]);
+
     this.setState({ prevSend: URL.createObjectURL(elem.target.files[0]) });
     this.setState({ imagenSave: elem.target.files[0]});
   }
@@ -153,6 +153,12 @@ class ProfileData extends Component {
     limpiarForma()
   }
 
+  newImg=(elem)=>{
+    this.setState({ prevSend: URL.createObjectURL(elem.target.files[0])});
+    this.setState({ imagenSave: elem.target.files[0]});
+
+  }
+
   async showPreview(e) {
     this.setState({ src: this.state.prevSend });
     const { guardarimagen,guardarimagenPreview } = this.props;
@@ -184,7 +190,6 @@ class ProfileData extends Component {
 
   onchangeText=(e,name)=>{
     const { updateForm } = this.props;
-
     updateForm(e.target.value.toUpperCase(),name)
     
   }
@@ -199,15 +204,16 @@ class ProfileData extends Component {
 
     return (
       <Fragment>
-        <div className="main-content fade-in " style={{ marginBottom: "25px" }}>
+        <div className="main-content fade-in " style={window.innerWidth>600 ?{ marginBottom: "25px",width: "80%", margin:'0 auto'}:{ marginBottom: "25px",width: "100%", margin:'0 auto'}}>
           <DivContenForm>
-            <div>
+            <div style={window.innerWidth>600 ?{textAlign:'center'}:{textAlign:'auto'}}>
               <img
                 alt="img del perfil"
                 src={this.state.src}
                 style={window.innerWidth>600 ?{ width: "100%", height: "25vw", objectFit: "contain" }:{ width: "100%", height: "54vw", objectFit: "contain" }}
               />
               <button
+              style={window.innerWidth>600 ?{ marginTop: "10px" }:{ marginTop: "auto" }}
                 className="buttonEdit"
                 onClick={() => {
                   this.showModal();
@@ -352,6 +358,8 @@ class ProfileData extends Component {
                 onBeforeFileLoad={this.onBeforeFileLoad}
               />
 
+              
+
               <img
                 src={`${URLHomePage}getImageOriginal/${this.props.userInfo.profile_picture_miniature}`}
                 alt="Preview"
@@ -361,7 +369,10 @@ class ProfileData extends Component {
 <div className='action_div'>
                   {this.mostrarAccionModalImg()}
                   </div>
-                  
+            {/*       
+                  <input
+                  type='file'
+                  onChange={this.onBeforeFileLoad}/> */}
               <button
              
                 onClick={(e) => {
