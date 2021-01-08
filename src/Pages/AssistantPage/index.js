@@ -145,7 +145,7 @@ class AssistantPage extends Component {
 <div
             style={{display:'flex',alignItems:'center', margin:'10px 0', justifyContent:'center'}}>
               <ReactCountryFlag
-              countryCode={this.flagCountry(this.props.app_user_assistant_info.assistant_postal_code.toString())}
+              countryCode={this.props.app_user_assistant_info.assistant_postal_code?this.flagCountry(this.props.app_user_assistant_info.assistant_postal_code.toString()):'CO'}
                 svg
                 style={{
                   fontSize: "2em",
