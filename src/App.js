@@ -7,8 +7,8 @@ import { Redirect } from "react-router-dom";
 import HomePage from './Pages/Homepage'
 import Header from './Components/Header'
 import LoginVales from './Pages/Login'
-import axios from 'axios'
-import {URL} from '../src/Global/url'
+/* import axios from 'axios'
+import {URL} from '../src/Global/url' */
 
 class App extends Component {
   
@@ -27,7 +27,7 @@ class App extends Component {
 
   render() {
 
-    
+/*     
     window.addEventListener("beforeunload", async function (e) {  
       e.preventDefault()      
       let headers = {
@@ -38,7 +38,7 @@ class App extends Component {
         headers: headers
     })
       return;
-    });
+    }); */
  
     return (
       <BrowserRouter>

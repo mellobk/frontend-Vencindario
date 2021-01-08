@@ -50,7 +50,7 @@ class DataPage extends Component {
           <div className="container-fluid" style={{marginTop:'25px',marginBottom:'25px'}}>
             <div className="row">
               <div className="col-6 col-md-3">
-                <img  onClick={(e)=>this.descargarExcel(e,'BASE DE DATOS.xlsx')} style={window.innerWidth>600 ?{width:'65%', display:'flex', margin:'0 auto'}:{width:'100%'}} src={ExcelImg} alt='excel IMG' />
+                <img  onClick={(e)=>this.descargarExcel(e,`BASE DE DATOS-${this.props.app_user_info.id}.xlsx`)} style={window.innerWidth>600 ?{width:'65%', display:'flex', margin:'0 auto'}:{width:'100%'}} src={ExcelImg} alt='excel IMG' />
                 <H2
                   aling="center"
                   sizeText={"14px"}
@@ -59,7 +59,7 @@ class DataPage extends Component {
                 />
               </div>
               <div className="col-6 col-md-3">
-                <img onClick={(e)=>this.descargarExcel(e,'HISTORIAL DE EVENTOS.xlsx')} style={window.innerWidth>600 ?{width:'65%', display:'flex', margin:'0 auto'}:{width:'100%'}} src={ExcelImg} alt='excel IMG'/>
+                <img onClick={(e)=>this.descargarExcel(e,`HISTORIAL DE EVENTOS-${this.props.app_user_info.id}.xlsx`)} style={window.innerWidth>600 ?{width:'65%', display:'flex', margin:'0 auto'}:{width:'100%'}} src={ExcelImg} alt='excel IMG'/>
                 <H2
                   aling="center"
                   sizeText={"14px"}
@@ -68,7 +68,7 @@ class DataPage extends Component {
                 />
               </div>
               <div className="col-6 col-md-3">
-                <img onClick={(e)=>this.descargarExcel(e,'LISTA DE PRECIOS.xlsx')} style={window.innerWidth>600 ?{width:'65%', display:'flex', margin:'0 auto'}:{width:'100%'}} src={ExcelImg} alt='excel IMG'/>
+                <img onClick={(e)=>this.descargarExcel(e,`LISTA DE PRECIOS-${this.props.app_user_info.id}.xlsx`)} style={window.innerWidth>600 ?{width:'65%', display:'flex', margin:'0 auto'}:{width:'100%'}} src={ExcelImg} alt='excel IMG'/>
                 <H2
                   aling="center"
                   sizeText={"14px"}
@@ -77,7 +77,7 @@ class DataPage extends Component {
                 />
               </div>
               <div className="col-6 col-md-3">
-                <img onClick={(e)=>this.descargarExcel(e,'LINKS.xlsx')} style={window.innerWidth>600 ?{width:'65%', display:'flex', margin:'0 auto'}:{width:'100%'}} src={ExcelImg} alt='excel IMG'/>
+                <img onClick={(e)=>this.descargarExcel(e,`LINKS-${this.props.app_user_info.id}.xlsx`)} style={window.innerWidth>600 ?{width:'65%', display:'flex', margin:'0 auto'}:{width:'100%'}} src={ExcelImg} alt='excel IMG'/>
                 <H2
                   aling="center"
                   sizeText={"14px"}

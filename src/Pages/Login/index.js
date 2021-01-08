@@ -9,7 +9,7 @@ import styled from 'styled-components'
 import H1 from '../../Components/H1'
 import { URL } from '../../Global/url'
 
-const backGroundImg=`${URL}getImageOriginal/backImg.png`
+const backGroundImg=`${window.innerWidth>600?`${URL}getImageOriginal/backImgPC.jpg`:`${URL}getImageOriginal/backImgMovil.jpg`}`
 const LoginDiv = styled.div`
     background-image: url(${backGroundImg});
     width: 100%;
@@ -121,7 +121,7 @@ class Login extends Component {
              <button    className='button__login'
                         onClick={this.guardar}
                         disabled={this.deshabilitar()}>
-                        Login
+                        ENTRAR
                 </button>
              </div>
                   <div className='action_div'>

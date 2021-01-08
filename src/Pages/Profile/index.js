@@ -49,7 +49,18 @@ const SelectCountry = styled.select`
   outline: none;
 ` */
 
-const DivPrefijo = styled.div`
+const DivPrefijo = styled.select`
+height: 2.2rem;
+margin: 25px 7px 0 -6px;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border: none;
+    width: 1.1rem;
+`
+
+const DivPrefijoDiv= styled.div`
 height: 2.2rem;
     margin: 25px 7px 0 7px;
     display: flex;
@@ -57,6 +68,7 @@ height: 2.2rem;
     font-size: 1.3rem;
     font-weight: bold;
 `
+
 
 class ProfileData extends Component {
   constructor(props) {
@@ -66,8 +78,10 @@ class ProfileData extends Component {
       preview: null,
       show: false,
       src: null,
+      srcLabel: null,
       prevSend: null,
       imagenSave:null,
+      prefijoUser:this.props.userInfo.user_postal_code,
       selectedOption:{value:null,label:null},
     };
 
@@ -129,7 +143,7 @@ class ProfileData extends Component {
 
    componentDidMount() {
   
-     this.setState({src: `${URLHomePage}getImageOriginal/${this.props.userInfo.profile_picture}`})
+    this.setState({srcLabel: this.props.userInfo.profile_picture?`${URLHomePage}getImageOriginal/${this.props.userInfo.profile_picture}`:`${URLHomePage}getImageOriginal/defaultLogo.png`})
     //this.setState({ src: fotoPrueba });
   }
 
@@ -160,7 +174,7 @@ class ProfileData extends Component {
   }
 
   async showPreview(e) {
-    this.setState({ src: this.state.prevSend });
+    this.setState({ srcLabel: this.state.prevSend });
     const { guardarimagen,guardarimagenPreview } = this.props;
     const files = this.state.imagenSave;
 
@@ -187,6 +201,82 @@ class ProfileData extends Component {
 
 
   }
+  handleChangeEstado=(e)=>{
+
+    this.setState({ prefijoUser: e.target.value});
+      const { updateForm } = this.props;
+    updateForm(e.target.value,'user_postal_code')
+  }
+
+
+
+  flagCountry=(data)=>{
+
+   
+    let Flag
+    switch (data) {
+      case '57':
+        Flag="CO"
+        break;
+      case '593':
+        Flag="EC"
+        break;
+        case '52':
+          Flag="MX"
+          break;
+          case '503':
+            Flag="SV"
+            break;
+            case '502':
+              Flag="GT"
+              break;
+              case '506':
+                Flag="CR"
+                break;
+                case '1':
+                  Flag="US"
+                  break;
+                  case '507':
+                    Flag="PA"
+                    break;
+                    case '51':
+                      Flag="PE"
+                      break;
+                      case '54':
+                        Flag="AR"
+                        break;
+                        case '598':
+                          Flag="UY"
+                          break;
+                          case '55':
+                            Flag="BR"
+                            break;
+                            case '58':
+                              Flag="VE"
+                              break;
+                              case '591':
+                                Flag="BO"
+                                break;
+                                case '1 809':
+                                  Flag="DO"
+                                  break;
+                                  case '53':
+                                    Flag="CU"
+                                    break;
+                                    case '505':
+                                      Flag="NI"
+                                      break;
+                                      case '01':
+                                        Flag="PR"
+                                        break;
+                                      
+      default:
+        Flag='CO';
+    }
+
+    return Flag
+    
+  }
 
   onchangeText=(e,name)=>{
     const { updateForm } = this.props;
@@ -209,7 +299,7 @@ class ProfileData extends Component {
             <div style={window.innerWidth>600 ?{textAlign:'center'}:{textAlign:'auto'}}>
               <img
                 alt="img del perfil"
-                src={this.state.src}
+                src={this.state.srcLabel}
                 style={window.innerWidth>600 ?{ width: "100%", height: "25vw", objectFit: "contain" }:{ width: "100%", height: "54vw", objectFit: "contain" }}
               />
               <button
@@ -243,7 +333,7 @@ class ProfileData extends Component {
             <div
             style={{display:'flex',alignItems:'center', margin:'25px 0'}}>
               <ReactCountryFlag
-                countryCode="CO"
+                countryCode={this.flagCountry(this.state.prefijoUser)}
                 svg
                 style={{
                   fontSize: "2em",
@@ -255,14 +345,34 @@ class ProfileData extends Component {
                 }}
                 cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/1x1/"
                 cdnSuffix="svg"
-                title="CO"
               />
 
+        <DivPrefijoDiv>
+           {`+${this.state.prefijoUser}`}
+         </DivPrefijoDiv> 
+  
 
-
-         <DivPrefijo>
-           +57
-         </DivPrefijo>
+                  <DivPrefijo onChange={this.handleChangeEstado}>
+                      <option value="57">Colombia</option>
+                      <option value="593">Ecuador</option>
+                      <option value="52">México</option>
+                      <option value="503">El Salvador</option>
+                      <option value="502">Guatemala</option>
+                      <option value="506">Costa Rica</option>
+                      <option value="1">EEUU</option>
+                      <option value="507">Panamá</option>
+                      <option value="51">Perú</option>
+                      <option value="54">Argentina</option>                      
+                      <option value="598">Uruguay</option>
+                      <option value="55">Brasil</option>
+                      <option value="58">Venezuela</option>
+                      <option value="591">Bolivia</option> 
+                      <option value="1">República Dominicana</option>
+                      <option value="1">Puerto Rico</option>
+                      <option value="53">Cuba</option>
+                      <option value="505">Nicaragua</option>
+                    </DivPrefijo>
+      {/*  */}
     
 
              <ButtonForm
@@ -341,7 +451,7 @@ class ProfileData extends Component {
                   this.editarInfo();
                 }}
               >
-                Editar Informacion
+                Guardar cambios
               </button>
         </div>
 
@@ -356,6 +466,7 @@ class ProfileData extends Component {
                 onClose={this.onClose}
                 src={this.state.src}
                 onBeforeFileLoad={this.onBeforeFileLoad}
+                label='Cambiar foto de perfil'
               />
 
               

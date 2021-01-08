@@ -81,7 +81,8 @@ class HomePage extends Component {
       <div className="main-content fade-in ">
        
             <div className='avatarModeloPerfilAssistant'>
-            <img alt='avatar perfil' className='avatarModeloPerfilimg' src={`${URL}getImageOriginal/${this.props.app_user_info.profile_picture_miniature}`} />
+              
+            <img alt='avatar perfil' className='avatarModeloPerfilimg' src={this.props.app_user_info.profile_picture_miniature?`${URL}getImageOriginal/${this.props.app_user_info.profile_picture_miniature}`:`${URL}getImageOriginal/defaultLogoMiniture.jpg`} />
           </div>
 
           <DivSeparator ></DivSeparator>
