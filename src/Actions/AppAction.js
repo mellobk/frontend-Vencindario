@@ -414,12 +414,6 @@ export const guardarimagen = (data,nameVar) => async (dispatch,getState) => {
               payload:newinfo
           })
 
-          let json = JSON.stringify(newinfo)
-          let paramsUpdate = json;
-          
-           await axios.post(URL + 'updateUserPlataform', paramsUpdate, {
-            headers: headers
-        })
        
       
     } catch (error) {

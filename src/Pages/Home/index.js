@@ -97,10 +97,7 @@ class Home extends Component {
         
               ))
         }
-{/*         <Carrousel showModal={this.showModal} titleText="PRIMEROS PASOS" />
-        <Carrousel titleText="SERVICIOS PARA TI Y SUS BENEFICIOS" />
-        <Carrousel titleText="SERVICIOS PARA TUS CLIENTES Y BENEFICIOS PARA TI" />
-        <Carrousel titleText="SERVICIOS PARA TUS CLIENTES Y BENEFICIOS PARA ELLOS" /> */}
+
     
 
 

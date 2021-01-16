@@ -117,6 +117,7 @@ class ProfileData extends Component {
   };
 
   onClose() {
+    this.setState({ prevSend:null});
     this.setState({ preview: null });
   }
 
@@ -266,7 +267,7 @@ class ProfileData extends Component {
                                     case '505':
                                       Flag="NI"
                                       break;
-                                      case '01':
+                                      case '1 849':
                                         Flag="PR"
                                         break;
                                       
@@ -309,7 +310,7 @@ class ProfileData extends Component {
                   this.showModal();
                 }}
               >
-                Editar
+                Cambiar Foto
               </button>
             </div>
             <ButtonForm
@@ -352,25 +353,25 @@ class ProfileData extends Component {
          </DivPrefijoDiv> 
   
 
-                  <DivPrefijo onChange={this.handleChangeEstado}>
+                    <DivPrefijo onChange={this.handleChangeEstado}>
+                      <option value="54">Argentina</option> 
+                      <option value="591">Bolivia</option> 
+                      <option value="55">Brasil</option>
                       <option value="57">Colombia</option>
+                      <option value="506">Costa Rica</option>
+                      <option value="53">Cuba</option>
                       <option value="593">Ecuador</option>
-                      <option value="52">México</option>
+                      <option value="1">EEUU</option>
                       <option value="503">El Salvador</option>
                       <option value="502">Guatemala</option>
-                      <option value="506">Costa Rica</option>
-                      <option value="1">EEUU</option>
+                      <option value="52">México</option>
+                      <option value="505">Nicaragua</option>
                       <option value="507">Panamá</option>
                       <option value="51">Perú</option>
-                      <option value="54">Argentina</option>                      
+                      <option value="1 849">Puerto Rico</option>
+                      <option value="1 809">República Dominicana</option>
                       <option value="598">Uruguay</option>
-                      <option value="55">Brasil</option>
-                      <option value="58">Venezuela</option>
-                      <option value="591">Bolivia</option> 
-                      <option value="1">República Dominicana</option>
-                      <option value="1">Puerto Rico</option>
-                      <option value="53">Cuba</option>
-                      <option value="505">Nicaragua</option>
+                      <option value="58">Venezuela</option>                   
                     </DivPrefijo>
       {/*  */}
     
@@ -480,18 +481,17 @@ class ProfileData extends Component {
 <div className='action_div'>
                   {this.mostrarAccionModalImg()}
                   </div>
-            {/*       
-                  <input
-                  type='file'
-                  onChange={this.onBeforeFileLoad}/> */}
-              <button
+                  {console.log('foto img',this.state.prevSend)}
+                  {this.state.prevSend?
+                       <button
              
-                onClick={(e) => {
-                  this.showPreview();
-                }}
-              >
-                Guardar
-              </button>
+                       onClick={(e) => {
+                         this.showPreview();
+                       }}
+                     >
+                       Cambiar
+                     </button>:""}
+         
             </div>
           </Modal.Body>
         </Modal>

@@ -47,6 +47,11 @@ export const HeaderApp = (props) => {
      }
   return (
     <div  style={window.innerWidth>600 ?{width:'70%',margin:'0 auto'}:{width:'100%',margin:'0 auto'}}>
+
+<h2 style={{ textAlign: "center", fontSize: "1.5rem",marginTop:'10px' }}>
+        {props.titleText}
+      </h2>
+      
       <Carousel        
         swipeable={true}
         draggable={true}
@@ -104,9 +109,7 @@ updated_at: null */}
  
       </Carousel>
       
-      <h2 style={{ textAlign: "center", fontSize: "1.5rem",marginTop:'10px' }}>
-        {props.titleText}
-      </h2>
+ 
     </div>
   );
 };
