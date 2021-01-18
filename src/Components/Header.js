@@ -38,12 +38,13 @@ export const  HeaderApp  = (props) => {
             <Fragment>
           <HeaderContainer>      
           <Link to="/Home"><img src={homeImg} alt='img home Img'  style={{...IconStyle,marginRight:'20px',width:'27%',float:'right'}}/></Link>
-                
+          <Link to={'/Home'} style={{textDecoration:'none', color:'black'}} >  
             <H1
             aling='center'            
             text='ByPlanner'            
             style={{margin:'10px',color:'white',fontSize:'2rem'}}
             />
+            </Link> 
              <Link to="/HomePage"><img src={profileImg} alt='img profile Img' style={{...IconStyle,marginLeft:'20px',width:'27%'}}/> </Link>
            </HeaderContainer>
         <HeaderNameContainer>
