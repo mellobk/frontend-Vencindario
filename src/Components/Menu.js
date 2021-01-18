@@ -56,7 +56,11 @@ class MenuScroll extends Component {
 
     console.log('propiedades',props)
     if(props.infoPlataform.length){
-      list.push({ name: 'DATOS PLATAFORMA' })
+      const ElementoMenu =list.find(element=> element.name==='DATOS PLATAFORMA')
+      if(!ElementoMenu){
+        list.push({ name: 'DATOS PLATAFORMA' })
+      }
+      
     }
     
 

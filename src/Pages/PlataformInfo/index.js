@@ -40,7 +40,7 @@ class PataformInfo extends Component {
   <tbody>
 
   {this.props.app_plataform_info.map((item, key) => (
-          <tr>
+          <tr key={key}>
           <td>{item.user_plataform_name}</td>
           <td>{item.user_cellPhone}</td>
           <td>{item.total_conexiones}</td>
