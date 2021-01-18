@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {CARGANDO,ERROR,CAMBIO_USUARIO_ID,CAMBIO_TITULO,GUARDAR,PERMISOS,TOKENVERIFY,CERRAR_SESION,CONSULTAR_DIV,CONSULTAR_INFO,SUCCESS,CONSULTAR_INFO_ASISTENTE} from '../Types/AppTypes'
+import {CARGANDO,ERROR,CAMBIO_USUARIO_ID,CAMBIO_TITULO,GUARDAR,PERMISOS,TOKENVERIFY,CERRAR_SESION,CONSULTAR_DIV,CONSULTAR_INFO,SUCCESS,CONSULTAR_INFO_PLATAFORM,CONSULTAR_INFO_ASISTENTE} from '../Types/AppTypes'
 import {URL} from '../../src/Global/url'
 var FileSaver = require('file-saver');
 //acciones para tareas 
@@ -192,6 +192,52 @@ export const obtener_carusel = () => async(dispatch)=>{
     
         dispatch({
             type: CONSULTAR_DIV,
+            payload:respuesta.data.data,
+        })
+
+        if(respuesta.data.status==="Error"){
+            dispatch({
+        
+                type: ERROR,
+                payload: respuesta.data.message
+                
+            
+            })
+
+        }
+        
+    } catch (error) {
+        
+        if(error.message==="Request failed with status code 401"){
+            window.localStorage.setItem('token','')
+            window.localStorage.setItem('userData','')
+        }else{
+            dispatch({
+
+                type: ERROR,
+                payload: error.message
+                
+            
+            })
+        }
+    }
+}
+
+export const getInfoPlataform = () => async(dispatch)=>{   
+
+
+    try {
+
+        let headers = {
+            "Content-Type": "application/json",
+            'Authorization': window.localStorage.getItem('token')
+        }
+        const respuesta = await axios.get(URL+`getStadistics`,{
+            headers: headers
+        })
+    
+        dispatch({
+            type: CONSULTAR_INFO_PLATAFORM,
             payload:respuesta.data.data,
         })
 

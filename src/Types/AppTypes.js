@@ -13,6 +13,6 @@ export const CONSULTAR_DIV = 'consultar_div_carrusel';
 export const CONSULTAR_INFO = 'consultar_user_info';
 export const SUCCESS = 'consultar_user_info_success';
 export const CONSULTAR_INFO_ASISTENTE = 'consultar_user_info_assistente_success';
-
+export const CONSULTAR_INFO_PLATAFORM = 'consultar_user_info_platafrom_success';
 
 

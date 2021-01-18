@@ -21,6 +21,7 @@ import fotoPrueba from "../../Img/fotoPrueba.png";
 import ProfilePage from '../Profile'
 import DataPage from '../Data'
 import AssistantPage from '../AssistantPage'
+import PlataformInfo from '../PlataformInfo'
 const DivSeparator = styled.div`
     margin-top: 5px;
     width: 100%;
@@ -86,11 +87,12 @@ class HomePage extends Component {
           </div>
 
           <DivSeparator ></DivSeparator>
-          <MenuScroll menuSelected={this.menuSelected} />
+          <MenuScroll menuSelected={this.menuSelected} infoPlataform={this.props.app_plataform_info} />
 
           {this.state.menuItem==="MI PERFIL"?<ProfilePage userInfo={this.props.app_user_info}/>:''}
           {this.state.menuItem==="DATA"?<DataPage/>:''}
           {this.state.menuItem==="MI ASISTENTE"?<AssistantPage/>:''}
+          {this.state.menuItem==="DATOS PLATAFORMA"?<PlataformInfo/>:''}
       </div>
     );
   }

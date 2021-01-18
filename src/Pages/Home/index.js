@@ -58,13 +58,14 @@ class Home extends Component {
 
   /*   window.onfocus = function() { console.log('focus'); };
     window.onblur = function() { console.log('blur'); } */
-    const { logOut,obtener_carusel,getUserInfo } = this.props;
+    const { logOut,obtener_carusel,getUserInfo,getInfoPlataform } = this.props;
 
     if(!window.localStorage.getItem("token") ){
       logOut()
     }
     obtener_carusel()
     getUserInfo()
+    getInfoPlataform()
    
  
    

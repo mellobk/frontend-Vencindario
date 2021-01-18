@@ -36,6 +36,7 @@ export const ArrowLeft = Arrow({ text: "<", className: "arrow-prev" });
 export const ArrowRight = Arrow({ text: <span  onClick={()=>console.log('click')}><RiArrowRightSLine size={'20px'} style={{marginTop:'-8px'}} /></span>, className: "arrow-next" });
 
 class MenuScroll extends Component {
+
   state = {
     alignCenter: true,
     clickWhenDrag: false,
@@ -49,7 +50,16 @@ class MenuScroll extends Component {
     wheel: true
   };
 
+  
+
   constructor(props) {
+
+    console.log('propiedades',props)
+    if(props.infoPlataform.length){
+      list.push({ name: 'DATOS PLATAFORMA' })
+    }
+    
+
     super(props);
     this.menu = this.menuItems;   
     this.menuItems = Menu(list.slice(0, list.length), this.state.selected);
