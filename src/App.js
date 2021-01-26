@@ -14,9 +14,13 @@ class App extends Component {
   
   async componentDidMount() {
     const { getUserInfo,getUserInfoAssistant,accesRegister } = this.props;
-    getUserInfo()
-    getUserInfoAssistant()  
-    accesRegister('entrada')
+    
+    if(window.localStorage.getItem('token')){
+      getUserInfo()
+      getUserInfoAssistant()  
+      accesRegister('entrada')
+    }
+  
    
    
   }

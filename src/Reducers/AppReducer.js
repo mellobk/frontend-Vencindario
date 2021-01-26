@@ -98,7 +98,7 @@ export default (state = INITIAL_STATE, action) => {
         login: action.payload,
         cargando: false,
         error: "",
-        isAuth: true,
+        isAuth: action.payload,
       };
 
     case PERMISOS:
