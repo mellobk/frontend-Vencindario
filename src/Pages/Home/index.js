@@ -93,7 +93,7 @@ class Home extends Component {
                this.props.app_carrusel.map((carrusel, key) => (
                 <div key={key} style={{marginTop:"25px"}}>
                { carrusel.item_carrusel.length>0?
-                <Carrousel key={key} items={carrusel.item_carrusel} showModal={this.showModal} sendInfoModal={this.sendInfoModal} titleText={carrusel.title_carrusel} />:""}
+                <Carrousel key={key} items={carrusel.item_carrusel} showModal={this.showModal} hideModal={this.hideModal} sendInfoModal={this.sendInfoModal} titleText={carrusel.title_carrusel} />:""}
                 </div>
         
               ))

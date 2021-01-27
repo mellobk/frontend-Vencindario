@@ -43,7 +43,6 @@ export const HeaderApp = (props) => {
 
   const modalClickEventNone = (e) =>{
     e.preventDefault()
-
      }
   return (
     <div  style={window.innerWidth>600 ?{width:'70%',margin:'0 auto'}:{width:'100%',margin:'0 auto'}}>
@@ -77,17 +76,19 @@ modal_text: "qweqwqwqdqdqwqeqweqwdqwqwewqdqweqwewqeqweqeqweqwewqqweqweqweqeqewqe
 modal_video: "dIwOmgaO7Ck"
 picture_item_carrusel: "https://www.youtube.com/watch?v=dIwOmgaO7Ck&ab_&ab_"
 updated_at: null */}
-{console.log('items del div',props.items)}
+
         {   
         props.items?
         props.items.map((itemCarrusel, key) => (
 
-          <div key={key}   onClick={itemCarrusel.modal?(e)=>modalClickEvent(e,itemCarrusel.modal_video,itemCarrusel.modal_text):(e)=>modalClickEventNone} style={{ height: "100%", display: "flex", alignItems: "center" }}>
+          <div key={key}   onClick={itemCarrusel.modal==='1'?(e)=>modalClickEvent(e,itemCarrusel.modal_video,itemCarrusel.modal_text):(e)=>modalClickEventNone(e)} style={{ height: "100%", display: "flex", alignItems: "center" }}>
+            {console.log('items del div',itemCarrusel.modal)}
           <img
             src={`${URL}getImageOriginal/${itemCarrusel.picture_item_carrusel}`}
             alt="img de prueba"
             style={{ width: "95%", margin: "0 auto" }}
           />
+          
         </div>
           
   
