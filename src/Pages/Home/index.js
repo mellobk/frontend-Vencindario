@@ -58,7 +58,7 @@ class Home extends Component {
 
   /*   window.onfocus = function() { console.log('focus'); };
     window.onblur = function() { console.log('blur'); } */
-    const { logOut,obtener_carusel,getUserInfo,getInfoPlataform } = this.props;
+    const { logOut,obtener_carusel,getUserInfo,getInfoPlataform,getUserInfoAssistant } = this.props;
 
     if(!window.localStorage.getItem("token") ){
       logOut()
@@ -66,7 +66,7 @@ class Home extends Component {
     obtener_carusel()
     getUserInfo()
     getInfoPlataform()
-   
+    getUserInfoAssistant()  
  
    
    

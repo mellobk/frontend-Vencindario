@@ -338,6 +338,7 @@ export const comprobartoken = () => (dispatch,getState)=>{
 
         dispatch({
             type: TOKENVERIFY,
+            payload: false
            
     })
 
@@ -345,7 +346,8 @@ export const comprobartoken = () => (dispatch,getState)=>{
 
        
         dispatch({
-            type: GUARDAR,
+            type: TOKENVERIFY,
+            payload: true
            
     })
     }
@@ -367,7 +369,7 @@ export const agregar = (nueva_tarea) => async(dispatch)=>{
         let json = JSON.stringify(nueva_tarea)
         let params = json;
 
-        const respuesta = await axios.post(URL+'login', params)
+        const respuesta = await axios.post(URL+'loginVales', params)
        
 
         if(respuesta.data.token.status === 'error'){

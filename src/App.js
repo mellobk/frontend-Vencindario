@@ -13,12 +13,12 @@ import {URL} from '../src/Global/url' */
 class App extends Component {
   
   async componentDidMount() {
-    const { getUserInfo,getUserInfoAssistant,accesRegister } = this.props;
     
+    const { comprobartoken,getUserInfo,accesRegister } = this.props;
     if(window.localStorage.getItem('token')){
       getUserInfo()
-      getUserInfoAssistant()  
       accesRegister('entrada')
+      comprobartoken()
     }
   
    
@@ -31,6 +31,7 @@ class App extends Component {
 
   render() {
 
+    
 /*     
     window.addEventListener("beforeunload", async function (e) {  
       e.preventDefault()      

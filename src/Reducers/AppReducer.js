@@ -95,7 +95,6 @@ export default (state = INITIAL_STATE, action) => {
     case GUARDAR:
       return {
         ...state,
-        login: action.payload,
         cargando: false,
         error: "",
         isAuth: action.payload,
@@ -115,7 +114,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         cargando: false,
         error: "",
-        isAuth: false,
+        isAuth: action.payload,
       };
 
     default:
