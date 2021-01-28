@@ -312,6 +312,16 @@ class ProfileData extends Component {
               >
                 Cambiar Foto
               </button>
+
+              <button
+                className="buttonEditInformation"
+                style={{marginTop:'25px 28px'}}
+                onClick={() => {
+                  this.editarInfo();
+                }}
+              >
+                Guardar cambios
+              </button>
             </div>
             <ButtonForm
               titleText="NOMBRE"
@@ -413,9 +423,18 @@ class ProfileData extends Component {
               value={this.props.userInfo.user_own_campus}
             />
 
-            <ButtonForm
-              titleText="CANTIDAD DE INVITADOS PROMEDIOS TICKET PROMEDIO DE EVENTOS"
+               <ButtonForm
+              titleText="CANTIDAD DE INVITADOS PROMEDIOS "
               placeholder="Ingresar Cantidas De invitados"
+              onchange={(e)=>this.onchangeText(e,'user_invited')}
+              mt='25px'
+              typeText={'text'}
+              value={this.props.userInfo.user_invited}
+            />
+
+            <ButtonForm
+              titleText="TICKET PROMEDIO DE EVENTOS"
+              placeholder="Ingresar Cantidas De eventos"
               onchange={(e)=>this.onchangeText(e,'user_tiket')}
               mt='25px'
               typeText={'text'}

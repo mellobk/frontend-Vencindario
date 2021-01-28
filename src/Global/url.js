@@ -2,7 +2,7 @@
 let URL_DEV
 
 if(process.env.NODE_ENV==='development'){
-    URL_DEV='https://api.valesexperiencias.com/'
+    URL_DEV='//localhost/API-valesExp/public/'
 }else{
     URL_DEV='https://api.valesexperiencias.com/'
 }
