@@ -415,7 +415,7 @@ class ProfileData extends Component {
             />
 
             <ButtonForm
-              titleText="SEDES PROPIAS +"
+              titleText="CANTIDAD SEDES PROPIAS "
               placeholder="Ingresar Sedes"
               onchange={(e)=>this.onchangeText(e,'user_own_campus')}
               mt='25px'
