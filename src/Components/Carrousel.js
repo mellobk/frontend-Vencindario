@@ -81,7 +81,7 @@ updated_at: null */}
         props.items?
         props.items.map((itemCarrusel, key) => (
 
-          <div key={key}   onClick={itemCarrusel.modal?(e)=>modalClickEvent(e,itemCarrusel.modal_video,itemCarrusel.modal_text):(e)=>modalClickEventNone(e)} style={{ height: "100%", display: "flex", alignItems: "center" }}>
+          <div key={key}   onClick={itemCarrusel.modal>0?(e)=>modalClickEvent(e,itemCarrusel.modal_video,itemCarrusel.modal_text):(e)=>modalClickEventNone(e)} style={{ height: "100%", display: "flex", alignItems: "center" }}>
             {console.log('items del div',itemCarrusel.modal)}
           <img
             src={`${URL}getImageOriginal/${itemCarrusel.picture_item_carrusel}`}
