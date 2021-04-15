@@ -1,149 +1,193 @@
+import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
+import { connect } from 'react-redux'
+import "../Css/menu.css";
+import * as AppAction from '../Actions/AppAction'
+import {
+  IoIosMenu
+} from "react-icons/io";
+import {
+  FaHome,
+  FaFontAwesomeFlag,
+  FaCalendarAlt,
+} from "react-icons/fa";
 
-import React, { /* Fragment */Component } from "react";
-import PropTypes from "prop-types";
-import ScrollMenu from "react-horizontal-scrolling-menu";
-import "../Css/index.css";
-import { RiArrowRightSLine} from "react-icons/ri";
+export class Menu extends Component {
+  componentDidMount() {
+    this.menuJs()
 
-let list = [
-    { name: 'MI PERFIL' },
-    { name: 'DATA' },
-    { name: 'MI ASISTENTE' },
-    { name: 'MIS EVENTOS' },
-    { name: 'COMISIONES & PAGOS' },
-];
+  }
 
-const MenuItem = ({ text, selected }) => {
-  return <div className={`menu-item ${selected ? "active" : ""}`}>{text}</div>;
-};
+  toggleMenu(event) {
+    document
+      .getElementsByClassName("navbar-primary")[0]
+      .classList.toggle("collapsed");
+      document.getElementsByClassName("navbar-primary-bg")[0]
+      .classList.toggle("collapsed");
+  }
 
-export const Menu = (list, selected) =>
-  list.map(el => {
-    const { name } = el;
+ menuJs(){
+  var mClass = '.sub-toggle'
+  var menu = document.querySelectorAll(mClass);
+   function removeClass(e, c) {
+    var elm = document.querySelectorAll(mClass);
+    for (var i = 0; i < elm.length; i++) {
+      if (c === 'active') {
+        elm[i].classList.remove('active');
+      } else {
+        elm[i].querySelector('.list').classList.remove('show');
+      }
+    }
+  } 
 
-    return <MenuItem text={name} key={name} selected={selected} />;
-  });
 
-const Arrow = ({ text, className }) => {
-  return <div className={className}>{text}</div>;
-};
-Arrow.propTypes = {
-  text: PropTypes.string,
-  className: PropTypes.string
-};
+  menu.forEach(function(o) {
+    
+    o.addEventListener('click', function(e) {
+      
+      removeClass(o, 'active');
+      this.classList.add('active');
+      removeClass(o);
+      this.querySelector('.list').classList.toggle('show');
+    });
 
-export const ArrowLeft = Arrow({ text: "<", className: "arrow-prev" });
-export const ArrowRight = Arrow({ text: <span  onClick={()=>console.log('click')}><RiArrowRightSLine size={'20px'} style={{marginTop:'-8px'}} /></span>, className: "arrow-next" });
+    
+  }); 
+ }
 
-class MenuScroll extends Component {
 
-  state = {
-    alignCenter: true,
-    clickWhenDrag: false,
-    dragging: true,
-    hideArrows: true,
-    hideSingleArrow: true,
-    scrollToSelected: false,
-    selected: "MI PERFIL",
-    translate: 0,
-    transition: 0.3,
-    wheel: true
-  };
+  logOut=(event)=>{
+event.preventDefault()
+const { logOut } = this.props;
+logOut()
+
+  }
+
 
   
 
-  constructor(props) {
+  ponerMenu = () => {
 
-    console.log('propiedades',props)
-    if(props.infoPlataform.length){
-      const ElementoMenu =list.find(element=> element.name==='DATOS PLATAFORMA')
-      if(!ElementoMenu){
-        list.push({ name: 'DATOS PLATAFORMA' })
-      }
+    return (
+      <Fragment>
+
+        <nav className="navbar  fixed-top navbar-inverse navbar-global navbar-fixed-top">
+          <div className="container-fluid">
+            <div className="navbar-header">
+              {/*    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span className="sr-only">Toggle navigation</span>
+            <span className="icon-bar"></span>
+            <span className="icon-bar"></span>
+            <span className="icon-bar"></span>
+          </button>  */}
+            </div>
+            <div id="navbard" className="">
+              <ul className="nav navbar-nav navbar-user navbar-right">
+                <li>
+                  <Link to="#"
+                  onClick={(e) => this.logOut( e)}
+                  >
+                    <span className="glyphicon glyphicon-log-out" 
+                      ></span> Logout
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <nav className="navbar-primary collapsed">
+          <ul className="navbar-primary-menu">
+            <div onClick={e => this.toggleMenu()} className="navbar-primary-bg collapsed">
+
+            </div>
+            <li className="nav-label">
+              <img
+                alt="menuLogo"
+                className="profil_img"
+                src={``}
+              />
+            </li>
+            <li className="nav-label">
+              <span className="welcometext">
+                {" "}
+                {`¡Bienvenido, ${
+                window.localStorage.getItem("email")
+                }!`}
+              </span>
+            </li>
+            <li
+              className="btn-expand-collapse"
+              onClick={e => this.toggleMenu()}
+            >
+              <span>
+                <IoIosMenu size={"16px"} className="icon_color" />
+              </span>
+            </li>
+            <li>
+              <h1 className="menuSeparator">
+                <span className="nav-label">MENÚ</span>
+              </h1>
+              <Link to="/Home">
+                <span>
+                  <FaHome size={"16px"} className="icon_color" />
+                </span>
+                <span className="nav-label">Inicio</span>
+              </Link>
+              <Link onClick={e=>this.props.showPostModal(true)} to="#">
+                <span>
+                  <FaFontAwesomeFlag size={"16px"} className="icon_color" />
+                </span>
+                <span  className="nav-label">Publicar post</span>
+              </Link>
+
+              <Link to="#">
+                <span>
+                  <FaCalendarAlt size={"16px"} className="icon_color" />
+                </span>
+                <span className="nav-label">Mi perfil</span>
+              </Link>
+
+              <Link to="#">
+                <span>
+                  <FaCalendarAlt size={"16px"} className="icon_color" />
+                </span>
+                <span className="nav-label">Mensajes</span>
+              </Link>
+
+              <Link to="#">
+                <span>
+                  <FaCalendarAlt size={"16px"} className="icon_color" />
+                </span>
+                <span className="nav-label">Grupos</span>
+              </Link>
       
-    }
-    
 
-    super(props);
-    this.menu = this.menuItems;   
-    this.menuItems = Menu(list.slice(0, list.length), this.state.selected);
-  }
+            
 
-  onFirstItemVisible = () => {
-    console.log("first item is visible");
-  };
+          
+           
+        
+            </li>
+          </ul>
+        </nav>
 
-  onLastItemVisible = () => {
-    console.log("last item is visible");
+   
+      </Fragment>
 
-  };
-
-  onUpdate = ({ translate }) => {
-    console.log(`onUpdate: translate: ${translate}`);
-    this.setState({ translate });
-  };
-
-  onSelect = key => {
-    console.log(`onSelect: ${key}`);
-    this.setState({ selected: key });
-    this.props.menuSelected(key)
-  };
-
-  componentDidUpdate( prevState) {
-    const { alignCenter } = prevState;
-    const { alignCenter: alignCenterNew } = this.state;
-    if (alignCenter !== alignCenterNew) {
-      this.menu.setInitial();
-    }
-  }
-
-
-  setSelected = ev => {
-    const { value } = ev.target;
-    this.setState({ selected: String(value) });
-    
+      
+    );
   };
 
   render() {
-    const {
-      clickWhenDrag,
-      hideArrows,
-      dragging,
-      hideSingleArrow,
-      scrollToSelected,
-      selected,
-      translate,
-      transition,
-      wheel
-    } = this.state;
+   
 
-    const menu = this.menuItems;
+    return this.ponerMenu();
 
-
-    return (
-      <div className="App">
-         <ScrollMenu
-          alignCenter={false}
-          arrowRight={ArrowRight}
-          clickWhenDrag={clickWhenDrag}
-          data={menu}
-          dragging={dragging}
-          hideArrows={hideArrows}
-          hideSingleArrow={hideSingleArrow}
-          onFirstItemVisible={this.onFirstItemVisible}
-          onLastItemVisible={this.onLastItemVisible}
-          onSelect={this.onSelect}
-          ref={el => (this.menu = el)}
-          scrollToSelected={scrollToSelected}
-          selected={selected}
-          transition={+transition}
-          translate={translate}
-          wheel={wheel}
-        />
-      </div>
-    );
+    
   }
 }
 
-export default MenuScroll;
+const mapStateToProps = ({ AppReducer }) => AppReducer
+//conectar tareas al reducer y traer las acciones del tareas actions
+export default connect(mapStateToProps, AppAction)(Menu)
 

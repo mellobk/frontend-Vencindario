@@ -1,17 +1,12 @@
 .navbar-global {
-  background: rgba(65,36,74,1);
-  background: -moz-linear-gradient(left, rgba(65,36,74,1) 0%, rgba(65,36,74,1) 38%, rgba(65,36,74,1) 46%, rgba(205,15,91,1) 71%, rgba(205,15,91,1) 85%, rgba(205,15,91,1) 100%);
-  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(65,36,74,1)), color-stop(38%, rgba(65,36,74,1)), color-stop(46%, rgba(65,36,74,1)), color-stop(71%, rgba(205,15,91,1)), color-stop(85%, rgba(205,15,91,1)), color-stop(100%, rgba(205,15,91,1)));
-  background: -webkit-linear-gradient(left, rgba(65,36,74,1) 0%, rgba(65,36,74,1) 38%, rgba(65,36,74,1) 46%, rgba(205,15,91,1) 71%, rgba(205,15,91,1) 85%, rgba(205,15,91,1) 100%);
-  background: -o-linear-gradient(left, rgba(65,36,74,1) 0%, rgba(65,36,74,1) 38%, rgba(65,36,74,1) 46%, rgba(205,15,91,1) 71%, rgba(205,15,91,1) 85%, rgba(205,15,91,1) 100%);
-  background: -ms-linear-gradient(left, rgba(65,36,74,1) 0%, rgba(65,36,74,1) 38%, rgba(65,36,74,1) 46%, rgba(205,15,91,1) 71%, rgba(205,15,91,1) 85%, rgba(205,15,91,1) 100%);
-  background: linear-gradient(to right, rgba(65,36,74,1) 0%, rgba(65,36,74,1) 38%, rgba(65,36,74,1) 46%, rgba(205,15,91,1) 71%, rgba(205,15,91,1) 85%, rgba(205,15,91,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#41244a', endColorstr='#cd0f5b', GradientType=1 );
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(122,82,193,0.9360119047619048) 35%, rgba(0,212,255,1) 100%);
 }
 
 .welcometext{
   display: flex;
-  justify-content: center;
+  text-align: center;
+  word-break: break-word;
   color:#828282;
 }
 
@@ -58,7 +53,7 @@
 }
 
 .navbar-primary {
-  background-color: #41244A;
+  background-color: #07042a;
   bottom: 0px;
   left: 0px;
   position: fixed;
@@ -112,7 +107,7 @@
 
 .btn-expand-collapse:hover,
 .btn-expand-collapse:focus {
-  background-color: rgba(205, 15, 91, 0.2);
+  background-color: #394c7f;
     opacity: 0.8;    
     color: white;
 }
@@ -129,13 +124,13 @@
   display: block;
   padding: 10px 18px;
   text-align: left;
-  //border-bottom:solid 1px #444;
+ border-bottom:solid 1px #444;
   color: #ccc;
 }
 
 .navbar-primary-menu li a:hover {
-  background-color: rgba(205, 15, 91, 0.2);
-    //opacity: 0.2; 
+  background-color: #394c7f;
+    opacity: 0.2; 
     text-decoration: none;   
   color: white;
 }
@@ -145,7 +140,7 @@
 }
 
 .navbar-primary-menu li a:hover .glyphicon {
-  color: orchid;
+  color: #394c7f;
 }
 
 .collapsed + .main-content {
@@ -161,7 +156,7 @@
 
 }
 .icon_color{
-  color:#CD0F5B;
+  color:#007bff;
   margin-top: -4px;
   margin-right: 17px;
 }
@@ -268,7 +263,6 @@ nav a:active{
 }
 
 
-//-------------------s
 
 ul.list {
   display: none;
@@ -282,7 +276,7 @@ ul.list {
 }
 .list li::before {
   content: '\2022';
-  color: #CD0F5B;
+  color: #394c7f;
   font-weight: bold;
   display: inline-block; 
   width: 1em;
@@ -340,7 +334,7 @@ ul.list {
 }
 .navbar-primary-bg{
   display: block;
-  background-color: rgba(205, 15, 91, 0.2);
+  background-color: rgba(7,4,42,.2);
   bottom: 0px;
   right: 0px;
   position: fixed;
@@ -353,7 +347,7 @@ ul.list {
 
 
 .navbar-primary {
-  background-color: #41244A;
+  background-color: #07042a;
   bottom: 0px;
   left: 0px;
   position: fixed;

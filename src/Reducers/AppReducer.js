@@ -1,98 +1,42 @@
 import {
   CARGANDO,
   ERROR,
-  CAMBIO_USUARIO_ID,
-  CAMBIO_TITULO,
-  GUARDAR,
-  TRAER_TODAS,
+  lOGIN,
   TOKENVERIFY,
   CERRAR_SESION,
-  PERMISOS,
-  CONSULTAR_DIV,
-  CONSULTAR_INFO,
   SUCCESS,
-  CONSULTAR_INFO_PLATAFORM,
-  CONSULTAR_INFO_ASISTENTE,
-} from "../Types/AppTypes";
+  POST_MODAL,
+  CONSULTAR_ALL_INFO_LIKES,
+  CONSULTAR_ALL_INFO_POSTS,
+  CREAR_NUEVO_POST,
+  CREAR_NUEVO_COMENTARIO_ID,
+  COMENTARY_MODAL,
+  CONSULTAR_POST_POSTID,
+  CANTIDAD_ELEMENTOS_SCROLL,
+  CONSULTAR_COMENTARIOS_POST} from "../Types/AppTypes";
 const INITIAL_STATE = {
   login: [],
-  app_carrusel: [],
-  app_user_info: [],
-  app_plataform_info: [],
-  app_user_assistant_info: [],
-  permisos: "",
-  perfil: "",
+  likes: [],
+  posts: [],
+  postsId: [],
+  post_modal: false,
+  comentarys:[],
+  comentary_modal: false,
+  post_reload: false,
+  idPost:"",
   cargando: false,
   error: "",
   usuario_id: "",
   isAuth: false,
   success: "",
   regresar: false,
+  elementosScoll:10
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case TRAER_TODAS:
-      return {
-        ...state,
-        usuario_id: "",
-        password: "",
-      };
-
-    case CARGANDO:
-      return { ...state, cargando: true };
-
-    case ERROR:
-      return { ...state, error: action.payload, cargando: false };
-
-    case CAMBIO_USUARIO_ID:
-      return {
-        ...state,
-        usuario_id: action.payload,
-      };
-
-    case SUCCESS:
-      return { ...state, success: action.payload, cargando: false, error: "" };
-
-    case CONSULTAR_DIV:
-      return {
-        ...state,
-        app_carrusel: action.payload,
-      };
-    case CONSULTAR_INFO:
-      return {
-        ...state,
-        app_user_info: action.payload,
-        cargando: false,
-        success: "",
-        error: "",
-      };
-
-    case CONSULTAR_INFO_PLATAFORM:
-      return {
-        ...state,
-        app_plataform_info: action.payload,
-        cargando: false,
-        success: "",
-        error: "",
-      };
-
-    case CONSULTAR_INFO_ASISTENTE:
-      return {
-        ...state,
-        app_user_assistant_info: action.payload,
-        cargando: false,
-        success: "",
-        error: "",
-      };
-    case CAMBIO_TITULO:
-      return {
-        ...state,
-        password: action.payload,
-      };
-
-    case GUARDAR:
+    case lOGIN:
       return {
         ...state,
         cargando: false,
@@ -100,8 +44,73 @@ export default (state = INITIAL_STATE, action) => {
         isAuth: action.payload,
       };
 
-    case PERMISOS:
-      return { ...state, success: "", cargando: false, error: "" };
+    case POST_MODAL:
+      return {
+        ...state,
+        post_modal: action.payload,
+      };
+      
+    case COMENTARY_MODAL:
+      return {
+        ...state,
+        comentary_modal: action.payload,
+      };
+
+    case CREAR_NUEVO_COMENTARIO_ID:
+      return {
+        ...state,
+        idPost: action.payload,
+      }; 
+
+    case CREAR_NUEVO_POST:
+      return {
+        ...state,
+        post_reload: action.payload,
+      };
+
+    case CONSULTAR_ALL_INFO_POSTS:
+      return {
+        ...state,
+        cargando: false,
+        error: "",
+        posts: action.payload,
+        post_reload: false,
+      };
+
+    case CONSULTAR_ALL_INFO_LIKES:
+      return {
+        ...state,
+        cargando: false,
+        error: "",
+        likes: action.payload,
+      };
+
+      case CANTIDAD_ELEMENTOS_SCROLL:
+        return {
+          ...state,
+          cargando: false,
+          error: "",
+          elementosScoll: action.payload,
+        };
+      
+      
+      case CONSULTAR_POST_POSTID:
+        return {
+          ...state,
+          cargando: false,
+          error: "",
+          postsId: action.payload,
+        };
+  
+      
+
+      case CONSULTAR_COMENTARIOS_POST:
+        return {
+          ...state,
+          cargando: false,
+          error: "",
+          comentarys: action.payload,
+        };
 
     case CERRAR_SESION:
       return {
@@ -116,6 +125,15 @@ export default (state = INITIAL_STATE, action) => {
         error: "",
         isAuth: action.payload,
       };
+
+    case CARGANDO:
+      return { ...state, cargando: true };
+
+    case ERROR:
+      return { ...state, error: action.payload, cargando: false };
+
+    case SUCCESS:
+      return { ...state, success: action.payload, cargando: false, error: "" };
 
     default:
       return state;

@@ -4,15 +4,24 @@ import { connect } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FormCard from "../../Components/Form";
 import PostCard from "../../Components/PostCard";
+import ComentarysCArd from "../../Components/ComentaryCard";
 import Modals from "../../Components/Modal";
 import Loading from "../../Components/Loading";
+import styled from "styled-components";
 
+const BackButton = styled.button`
+      float: right;
+    margin: 5px;
+    border-radius: 5px;
+    background: #28b0ee;
+    color: white;
+    &:hover {
+    color: black;
+  }
+`;
 
-
-class Home extends Component {
-  state = { show: false, 
-    per: 10, 
-    scrolling: false };
+class PostComentary extends Component {
+  state = { show: false, video: "", textModal: "" };
 
   showModal = () => {
     this.setState({ show: true });
@@ -23,9 +32,9 @@ class Home extends Component {
   };
 
   renderPosts = () =>
-    this.props.posts.slice(0,this.props.elementosScoll).map((posts, key) => (
+    this.props.postsId.map((posts, key) => (
       <PostCard
-        postsData={this.props.posts}
+       
         postsInfo={posts}
         likes={this.props.likes}
         key={key}
@@ -34,6 +43,16 @@ class Home extends Component {
         crearNuevocomentario={this.props.crearNuevocomentario}
       />
     ));
+
+
+    renderComentarys = () =>
+    this.props.comentarys.map((comentary, key) => (
+      <ComentarysCArd
+      key={key}
+      comentaryInfo={comentary}
+      />
+    ));
+
 
   showPostModal = (data) => {
     this.props.showPostModal(data);
@@ -45,38 +64,19 @@ class Home extends Component {
   };
 
   async componentDidMount() {
-    const { getAllInformation } = this.props;
-    getAllInformation()
-    window.addEventListener('scroll',this.handleScroll)
 
- 
-  }
-  handleScroll =()=> {
-        const {scrolling} = this.state
-    if(scrolling) return
-    //if(totalLength <= )
     
-    const divscroll = document.getElementById('scroll')
-    const divScrollOffSet = divscroll.offsetTop + divscroll.clientHeight
-    const pageOffSet = window.pageYOffset + window.innerHeight
-    let bottomOffSet = 20
-    
-if(pageOffSet>divScrollOffSet - bottomOffSet) this.props.elementScroll(this.props.elementosScoll+10)
-  
-  }
+    const { getPostComentary,match: {
+      params: { Post_id },
+  }, } = this.props;
 
+    getPostComentary(Post_id);
+  }
 
   componentDidUpdate() {
-    const { getAllInformation, post_reload } = this.props;
-    if (post_reload) {
-      getAllInformation();
-    }
   }
 
-  componentWillUnmount() {
-
-    window.removeEventListener('scroll',this.handleScroll,false)
-  }
+  componentWillUnmount() {}
 
   render() {
     
@@ -84,21 +84,11 @@ if(pageOffSet>divScrollOffSet - bottomOffSet) this.props.elementScroll(this.prop
 
     return (
       <div className="main-content fade-in ">
-
+                <BackButton  onClick={() =>this.props.history.goBack()}> volver</BackButton>
         
 <div className="action_div">{<Loading error={error} cargando={cargando} success={success}/>}</div>
         {this.renderPosts()}
-
-        <Modals
-          post_modal={this.props.post_modal}
-          showPostModal={this.showPostModal}
-          FormCard={
-            <FormCard
-              buttonName="Publicar"
-              newContent={this.props.crearNuevoPost}
-            />
-          }
-        />
+        {this.renderComentarys()} 
 
         <Modals
           post_modal={this.props.comentary_modal}
@@ -110,12 +100,11 @@ if(pageOffSet>divScrollOffSet - bottomOffSet) this.props.elementScroll(this.prop
             />
           }
         />
-
-        <div id='scroll'> </div>
+<div id='scroll'> </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = ({ AppReducer }) => AppReducer;
-export default connect(mapStateToProps, AppAction)(Home);
+export default connect(mapStateToProps, AppAction)(PostComentary);

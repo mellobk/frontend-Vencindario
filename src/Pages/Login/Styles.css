@@ -9,6 +9,15 @@
 
 }
 
+.collapsed+.main-content {
+    margin-left: 60px;
+}
+.main-content {
+    margin-top: 39px;
+    margin-left: 215px;
+    padding: 0;
+}
+
 .action_div{
     text-align: center;
 }

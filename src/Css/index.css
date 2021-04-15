@@ -1,7 +1,4 @@
-@font-face {
-  font-family: "font-page";
-  src: url('./TrajanPro-Regular.ttf');
-  }
+
 body{
   margin: 0;
   padding: 0;
@@ -274,19 +271,6 @@ table {
 }
 
 
-.buttonEditInformation{ 
-  background: none;
-  position: relative;
-  border: 0.2px solid black;
-  margin-top: 25px;
-  margin-left: 7.5vw;
-  
-}
-.menu-wrapper--inner{
-  transform: translate3d(20vw, 0px, 0px);
-  width: auto !important;
-}
-
 @media only screen and (max-width: 600px) {
 .menu-wrapper--inner{
   transform: translate3d(0px, 0px, 0px);
@@ -301,23 +285,6 @@ table {
 }
 
 
-.buttonEdit{
-  background: none;
-  position: relative;
-  border: 0.2px solid black;
-  margin-right: 0px;
-  margin-top: 2px;
-  float: right;
-}
-
-
-.buttonEditInformation{
-  background: none;
-  position: relative;
-  border: 0.2px solid black;
-  margin: 25px 26px;
-  float: right;
-}
 
 }
 

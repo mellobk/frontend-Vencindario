@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
+import Menu from './Components/Menu'
 import { BrowserRouter, Route } from 'react-router-dom'
 import * as AppAction from '../src/Actions/AppAction'
 import { connect } from 'react-redux'
 import Home from './Pages/Home'
 import { Redirect } from "react-router-dom";
-import HomePage from './Pages/Homepage'
-import Header from './Components/Header'
-import LoginVales from './Pages/Login'
+import Login from './Pages/Login'
+import Post from './Pages/Post'
 /* import axios from 'axios'
 import {URL} from '../src/Global/url' */
 
@@ -14,10 +14,9 @@ class App extends Component {
   
   async componentDidMount() {
     
-    const { comprobartoken,getUserInfo,accesRegister } = this.props;
-    if(window.localStorage.getItem('token')){
-      getUserInfo()
-      accesRegister('entrada')
+    const { comprobartoken } = this.props;
+    if(window.localStorage.getItem('id_user')){
+      console.log('entro 1 carga')
       comprobartoken()
     }
   
@@ -53,18 +52,16 @@ class App extends Component {
 
           {
 
-            this.props.isAuth
-            
-              ? <Route >
-                <Header  userInfo={this.props.app_user_info}/>
+          this.props.isAuth         
+              ? 
+                <Route >
+                <Menu />
                 <Route exact path='/Home' component={Home} />
-                <Route exact path='/HomePage' component={HomePage} /> 
+                <Route exact path='/Post/:Post_id' component={Post} />
               </Route>
-              : <Route>
-               {/*  <Route exact path='/' component={Home} /> */}
-                
-                <Route exact path='/' component={LoginVales} /> 
-                
+              : <Route>                
+                <Route exact path='/' component={Login} /> 
+                 
                 
               </Route>
 
@@ -72,15 +69,13 @@ class App extends Component {
 
           }
 
-          {
-             this.props.isAuth ? <Redirect to='/Home' /> : <Redirect to='/' />
-/* 
-            this.props.isAuth ? <Redirect to='/Home' /> : <Redirect to='/' /> */
-          }
    
+    { this.props.isAuth ? <Redirect to='/Home' /> : <Redirect to='/' />} 
 
 
       </BrowserRouter>
+
+      
 
     )
   }
